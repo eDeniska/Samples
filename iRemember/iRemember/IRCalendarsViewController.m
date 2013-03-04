@@ -1,47 +1,39 @@
 //
-//  IRItemsViewController.m
+//  IRCalendarsViewController.m
 //  iRemember
 //
 //  Created by Danis Tazetdinov on 04.03.13.
 //  Copyright (c) 2013 Demo. All rights reserved.
 //
 
-#import "IRItemsViewController.h"
+#import "IRCalendarsViewController.h"
 #import "IRRemainderManager.h"
+#import "IRItemsViewController.h"
 
-@interface IRItemsViewController ()
+@interface IRCalendarsViewController ()
 
-@property (nonatomic, strong) NSArray *remainders;
+@property (nonatomic, strong) NSArray *calendars;
 @property (nonatomic, strong) IRRemainderManager *remainderManager;
-
--(IBAction)refresh;
--(void)resignActive:(NSNotification*)notification;
--(void)accessGranted:(NSNotification*)notification;
 
 @end
 
-@implementation IRItemsViewController
+@implementation IRCalendarsViewController
 
 -(void)resignActive:(NSNotification*)notification
 {
 #warning TODO: disable UI
-    // disable UI
 }
 
 -(void)accessGranted:(NSNotification*)notification
 {
 #warning TODO: enable UI
-    if (!self.calendarIdentifier)
-    {
-        self.calendarIdentifier = [[[self.remainderManager remainderCalendars] lastObject] calendarIdentifier];
-    }
     [self refresh];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.remainderManager = [[IRRemainderManager alloc] init];
     
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
@@ -66,39 +58,35 @@
 -(IBAction)refresh
 {
     [self.refreshControl beginRefreshing];
-    [self.remainderManager fetchRemaindersInCalendarWithIdentifier:self.calendarIdentifier
-                                                        completion:^(NSArray *remainders) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.remainders = remainders;
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
-        });
-    }];
+
+    self.calendars = [self.remainderManager remainderCalendars];
+    
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 }
+
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return self.remainders.count;
+    return self.calendars.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"RemainderCell";
+    static NSString *CellIdentifier = @"CalendarCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    EKReminder *remainder = self.remainders[indexPath.row];
+    EKCalendar *calendar = self.calendars[indexPath.row];
     
-    cell.textLabel.text = remainder.title;
-    
+    cell.textLabel.text = calendar.title;
+    cell.detailTextLabel.text = calendar.source.title;
     
     return cell;
 }
@@ -124,11 +112,13 @@
     }   
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([segue.identifier isEqualToString:@"ShowCalendar"])
+    {
+        IRItemsViewController *vc = segue.destinationViewController;
+        vc.calendarIdentifier = [self.calendars[[self.tableView indexPathForCell:sender].row] calendarIdentifier];
+    }
 }
 
 @end

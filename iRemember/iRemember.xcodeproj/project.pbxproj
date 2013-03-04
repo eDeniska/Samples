@@ -13,13 +13,18 @@
 		9337039F16E47C0800DDD42D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9337039D16E47C0800DDD42D /* InfoPlist.strings */; };
 		933703A116E47C0800DDD42D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703A016E47C0800DDD42D /* main.m */; };
 		933703A516E47C0800DDD42D /* IRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703A416E47C0800DDD42D /* IRAppDelegate.m */; };
-		933703A716E47C0800DDD42D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703A616E47C0800DDD42D /* Default.png */; };
-		933703A916E47C0800DDD42D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703A816E47C0800DDD42D /* Default@2x.png */; };
-		933703AB16E47C0800DDD42D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703AA16E47C0800DDD42D /* Default-568h@2x.png */; };
 		933703AE16E47C0800DDD42D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933703AC16E47C0800DDD42D /* MainStoryboard.storyboard */; };
 		933703B816E47D7300DDD42D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933703B716E47D7300DDD42D /* EventKit.framework */; };
 		933703BD16E47E3F00DDD42D /* IRItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703BC16E47E3F00DDD42D /* IRItemsViewController.m */; };
 		933703C116E47E9700DDD42D /* IRRemainderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703C016E47E9700DDD42D /* IRRemainderManager.m */; };
+		933703C516E4AF2A00DDD42D /* IRCalendarsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703C416E4AF2A00DDD42D /* IRCalendarsViewController.m */; };
+		933703C716E4B48B00DDD42D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703C616E4B48B00DDD42D /* Default.png */; };
+		933703C916E4B48E00DDD42D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703C816E4B48E00DDD42D /* Default@2x.png */; };
+		933703CB16E4B49000DDD42D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703CA16E4B49000DDD42D /* Default-568h@2x.png */; };
+		933703D016E4B6E800DDD42D /* iRememberSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703CC16E4B6E700DDD42D /* iRememberSettings.png */; };
+		933703D116E4B6E800DDD42D /* iRememberSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703CD16E4B6E700DDD42D /* iRememberSettings@2x.png */; };
+		933703D716E4B74A00DDD42D /* iRememberPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703D616E4B74A00DDD42D /* iRememberPhone.png */; };
+		933703D916E4B74F00DDD42D /* iRememberPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703D816E4B74F00DDD42D /* iRememberPhone@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,15 +38,22 @@
 		933703A216E47C0800DDD42D /* iRemember-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iRemember-Prefix.pch"; sourceTree = "<group>"; };
 		933703A316E47C0800DDD42D /* IRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IRAppDelegate.h; sourceTree = "<group>"; };
 		933703A416E47C0800DDD42D /* IRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRAppDelegate.m; sourceTree = "<group>"; };
-		933703A616E47C0800DDD42D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		933703A816E47C0800DDD42D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		933703AA16E47C0800DDD42D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		933703AD16E47C0800DDD42D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		933703B716E47D7300DDD42D /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		933703BB16E47E3F00DDD42D /* IRItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRItemsViewController.h; sourceTree = "<group>"; };
 		933703BC16E47E3F00DDD42D /* IRItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRItemsViewController.m; sourceTree = "<group>"; };
 		933703BF16E47E9700DDD42D /* IRRemainderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRRemainderManager.h; sourceTree = "<group>"; };
 		933703C016E47E9700DDD42D /* IRRemainderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRRemainderManager.m; sourceTree = "<group>"; };
+		933703C216E49F2E00DDD42D /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
+		933703C316E4AF2A00DDD42D /* IRCalendarsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCalendarsViewController.h; sourceTree = "<group>"; };
+		933703C416E4AF2A00DDD42D /* IRCalendarsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCalendarsViewController.m; sourceTree = "<group>"; };
+		933703C616E4B48B00DDD42D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		933703C816E4B48E00DDD42D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		933703CA16E4B49000DDD42D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		933703CC16E4B6E700DDD42D /* iRememberSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iRememberSettings.png; sourceTree = "<group>"; };
+		933703CD16E4B6E700DDD42D /* iRememberSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iRememberSettings@2x.png"; sourceTree = "<group>"; };
+		933703D616E4B74A00DDD42D /* iRememberPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iRememberPhone.png; sourceTree = SOURCE_ROOT; };
+		933703D816E4B74F00DDD42D /* iRememberPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iRememberPhone@2x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +116,17 @@
 		9337039B16E47C0800DDD42D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				933703CC16E4B6E700DDD42D /* iRememberSettings.png */,
+				933703CD16E4B6E700DDD42D /* iRememberSettings@2x.png */,
+				933703D816E4B74F00DDD42D /* iRememberPhone@2x.png */,
+				933703D616E4B74A00DDD42D /* iRememberPhone.png */,
+				933703CA16E4B49000DDD42D /* Default-568h@2x.png */,
+				933703C816E4B48E00DDD42D /* Default@2x.png */,
+				933703C616E4B48B00DDD42D /* Default.png */,
 				9337039C16E47C0800DDD42D /* iRemember-Info.plist */,
 				9337039D16E47C0800DDD42D /* InfoPlist.strings */,
 				933703A016E47C0800DDD42D /* main.m */,
 				933703A216E47C0800DDD42D /* iRemember-Prefix.pch */,
-				933703A616E47C0800DDD42D /* Default.png */,
-				933703A816E47C0800DDD42D /* Default@2x.png */,
-				933703AA16E47C0800DDD42D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -120,6 +136,8 @@
 			children = (
 				933703BB16E47E3F00DDD42D /* IRItemsViewController.h */,
 				933703BC16E47E3F00DDD42D /* IRItemsViewController.m */,
+				933703C316E4AF2A00DDD42D /* IRCalendarsViewController.h */,
+				933703C416E4AF2A00DDD42D /* IRCalendarsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -127,6 +145,7 @@
 		933703BA16E47DB600DDD42D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				933703C216E49F2E00DDD42D /* Debug.h */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -193,10 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9337039F16E47C0800DDD42D /* InfoPlist.strings in Resources */,
-				933703A716E47C0800DDD42D /* Default.png in Resources */,
-				933703A916E47C0800DDD42D /* Default@2x.png in Resources */,
-				933703AB16E47C0800DDD42D /* Default-568h@2x.png in Resources */,
 				933703AE16E47C0800DDD42D /* MainStoryboard.storyboard in Resources */,
+				933703C716E4B48B00DDD42D /* Default.png in Resources */,
+				933703C916E4B48E00DDD42D /* Default@2x.png in Resources */,
+				933703CB16E4B49000DDD42D /* Default-568h@2x.png in Resources */,
+				933703D016E4B6E800DDD42D /* iRememberSettings.png in Resources */,
+				933703D116E4B6E800DDD42D /* iRememberSettings@2x.png in Resources */,
+				933703D716E4B74A00DDD42D /* iRememberPhone.png in Resources */,
+				933703D916E4B74F00DDD42D /* iRememberPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +234,7 @@
 				933703A516E47C0800DDD42D /* IRAppDelegate.m in Sources */,
 				933703BD16E47E3F00DDD42D /* IRItemsViewController.m in Sources */,
 				933703C116E47E9700DDD42D /* IRRemainderManager.m in Sources */,
+				933703C516E4AF2A00DDD42D /* IRCalendarsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +357,7 @@
 				933703B616E47C0800DDD42D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

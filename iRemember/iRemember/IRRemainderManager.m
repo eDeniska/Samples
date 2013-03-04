@@ -12,10 +12,11 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 
 @interface IRRemainderManager()
 
-@property (nonatomic, readwrite) BOOL accessGranted;
+@property (atomic, readwrite) BOOL accessGranted;
 @property (nonatomic, strong) EKEventStore *store;
 
 -(void)resignActive:(NSNotification*)notification;
+-(void)becomeActive:(NSNotification*)notification;
 
 @end
 
@@ -30,6 +31,10 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
                                                  selector:@selector(resignActive:)
                                                      name:UIApplicationWillResignActiveNotification
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(becomeActive:)
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
     }
     
     return self;
@@ -38,6 +43,11 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 -(void)resignActive:(NSNotification*)notification
 {
     self.accessGranted = NO;
+}
+
+-(void)becomeActive:(NSNotification*)notification
+{
+    [self requestAccess];
 }
 
 -(void)dealloc
@@ -58,15 +68,15 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 {
     if (!self.accessGranted)
     {
-        [_store requestAccessToEntityType:EKEntityTypeReminder
-                               completion:^(BOOL granted, NSError *error) {
-                                   self.accessGranted = granted;
-                                   if (granted)
-                                   {
-                                       [[NSNotificationCenter defaultCenter] postNotificationName:IRRemainderManagerAccessGrantedNotification
-                                                                                           object:self];
-                                   }
-                               }];
+        [self.store requestAccessToEntityType:EKEntityTypeReminder
+                                   completion:^(BOOL granted, NSError *error) {
+                                       self.accessGranted = granted;
+                                       if (granted)
+                                       {
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRRemainderManagerAccessGrantedNotification
+                                                                                               object:self];
+                                       }
+                                   }];
     }
 }
 
@@ -83,14 +93,19 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 }
 
 
--(void)fetchRemaindersInCalendar:(EKCalendar*)calendar completion:(IRRemainderFetchCompletionBlock)completionBlock
+-(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRRemainderFetchCompletionBlock)completionBlock
 {
     if (self.accessGranted)
     {
+        EKCalendar *calendar = [self.store calendarWithIdentifier:identifier];
         [self.store fetchRemindersMatchingPredicate:[self.store predicateForIncompleteRemindersWithDueDateStarting:nil
                                                                                                             ending:nil
                                                                                                          calendars:@[calendar]]
                                          completion:completionBlock];
+    }
+    else if (completionBlock)
+    {
+        completionBlock(nil);
     }
 }
 
