@@ -64,6 +64,16 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     return _store;
 }
 
+#pragma mark - Verification methods
+
++(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier
+{
+    EKEventStore *store = [[EKEventStore alloc] init];
+    return ((calendarIdentifier) && ([store calendarWithIdentifier:calendarIdentifier])) ? YES : NO;
+}
+
+
+
 #pragma mark - Access management
 
 -(void)requestAccess

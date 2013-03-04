@@ -8,7 +8,7 @@
 
 #import "IRCalendarsViewController.h"
 #import "IRRemainderManager.h"
-#import "IRItemsViewController.h"
+#import "IRRemaindersViewController.h"
 
 @interface IRCalendarsViewController ()
 
@@ -116,7 +116,7 @@
 {
     if ([segue.identifier isEqualToString:@"ShowRemainders"])
     {
-        IRItemsViewController *vc = segue.destinationViewController;
+        IRRemaindersViewController *vc = segue.destinationViewController;
         vc.calendarIdentifier = [self.calendars[[self.tableView indexPathForCell:sender].row] calendarIdentifier];
     }
 }

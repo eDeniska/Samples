@@ -1,15 +1,17 @@
 //
-//  IRItemsViewController.m
+//  IRRemaindersViewController.m
 //  iRemember
 //
 //  Created by Danis Tazetdinov on 04.03.13.
 //  Copyright (c) 2013 Demo. All rights reserved.
 //
 
-#import "IRItemsViewController.h"
+#import "IRRemaindersViewController.h"
 #import "IRRemainderManager.h"
 
-@interface IRItemsViewController ()
+#define kCalendarIdentifierKey @"CalendarIdentifier"
+
+@interface IRRemaindersViewController () <UIViewControllerRestoration>
 
 @property (nonatomic, strong) NSArray *remainders;
 @property (nonatomic, strong) IRRemainderManager *remainderManager;
@@ -20,7 +22,37 @@
 
 @end
 
-@implementation IRItemsViewController
+@implementation IRRemaindersViewController
+
+
+#pragma mark - State restoration
+
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:self.calendarIdentifier forKey:kCalendarIdentifierKey];
+}
+
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder
+{
+    self.calendarIdentifier = [coder decodeObjectForKey:kCalendarIdentifierKey];
+}
+
++(UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents
+                                                           coder:(NSCoder *)coder
+{
+    NSString *calendarIdentifier = [coder decodeObjectForKey:kCalendarIdentifierKey];
+    if ([IRRemainderManager isCalendarIdentifierValid:calendarIdentifier])
+    {
+        UIStoryboard *storyboard = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
+        IRRemaindersViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"IRRemaindersViewController"];
+        vc.calendarIdentifier = calendarIdentifier;
+        return vc;
+    }
+    else
+    {
+        return nil;
+    }
+}
 
 -(void)resignActive:(NSNotification*)notification
 {
@@ -41,6 +73,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.restorationClass = [self class];
 
     self.remainderManager = [[IRRemainderManager alloc] init];
     

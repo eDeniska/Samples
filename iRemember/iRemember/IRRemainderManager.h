@@ -20,6 +20,10 @@ typedef void (^IRRemainderFetchCompletionBlock)(NSArray *remainders);
 @property (atomic, readonly) BOOL accessGranted;
 -(void)requestAccess;
 
+// Verification methods
+
++(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier;
+
 // Fetch and add remainders
 
 -(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRRemainderFetchCompletionBlock)completionBlock;

@@ -52,6 +52,9 @@
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="4WK-Yb-cx5">
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh" destination="wjI-AN-BwK" eventType="valueChanged" id="xJv-iS-IzQ"/>
+                        </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtX-bR-a73" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -133,10 +136,10 @@
             </objects>
             <point key="canvasLocation" x="630" y="678"/>
         </scene>
-        <!--Items View Controller - Items-->
+        <!--Remainders View Controller - Items-->
         <scene sceneID="RKT-WG-sJV">
             <objects>
-                <tableViewController storyboardIdentifier="IRItemsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj5-Zs-MAI" customClass="IRItemsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="IRRemaindersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj5-Zs-MAI" customClass="IRRemaindersViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hIz-hU-KYk">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,6 +172,9 @@
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="wgx-gc-8Te">
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh" destination="Sj5-Zs-MAI" eventType="valueChanged" id="ZBi-CV-yhl"/>
+                        </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxH-Sv-cEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,8 +269,8 @@
         <class className="IRCalendarsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRCalendarsViewController.h"/>
         </class>
-        <class className="IRItemsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRItemsViewController.h"/>
+        <class className="IRRemaindersViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRRemaindersViewController.h"/>
             <relationships>
                 <relationship kind="action" name="refresh"/>
             </relationships>
