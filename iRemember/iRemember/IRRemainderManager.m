@@ -64,6 +64,8 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     return _store;
 }
 
+#pragma mark - Access management
+
 -(void)requestAccess
 {
     if (!self.accessGranted)
@@ -80,6 +82,7 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     }
 }
 
+#pragma mark - Calendars
 
 -(NSArray*)remainderCalendars
 {
@@ -92,12 +95,40 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     return calendars;
 }
 
+-(NSArray*)sources
+{
+    return self.accessGranted ? [self.store sources] : nil;
+}
 
--(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRRemainderFetchCompletionBlock)completionBlock
+-(EKCalendar*)addCalendarWithTitle:(NSString*)title inSourceWithIdentifier:(NSString*)sourceIdentifier
 {
     if (self.accessGranted)
     {
-        EKCalendar *calendar = [self.store calendarWithIdentifier:identifier];
+        EKCalendar *calendar = [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:self.store];
+        calendar.title = title;
+        calendar.source = [self.store sourceWithIdentifier:sourceIdentifier];
+        
+        NSError __autoreleasing *error;
+        
+        if ([self.store saveCalendar:calendar commit:YES error:&error])
+        {
+            return calendar;
+        }
+        else
+        {
+            DLog(@"failure saving calendar: %@", error);
+        }
+    }
+    return nil;
+}
+
+#pragma mark - Remainder fetch and submit
+
+-(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)calendarIdentifier completion:(IRRemainderFetchCompletionBlock)completionBlock
+{
+    if (self.accessGranted)
+    {
+        EKCalendar *calendar = [self.store calendarWithIdentifier:calendarIdentifier];
         [self.store fetchRemindersMatchingPredicate:[self.store predicateForIncompleteRemindersWithDueDateStarting:nil
                                                                                                             ending:nil
                                                                                                          calendars:@[calendar]]
@@ -107,6 +138,29 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     {
         completionBlock(nil);
     }
+}
+
+-(EKReminder*)addRemainderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier
+{
+    if (self.accessGranted)
+    {
+        EKReminder *remainder = [EKReminder reminderWithEventStore:self.store];
+        remainder.calendar = [self.store calendarWithIdentifier:calendarIdentifier];
+        remainder.title = title;
+        
+        
+        NSError __autoreleasing *error;
+        
+        if ([self.store saveReminder:remainder commit:YES error:&error])
+        {
+            return remainder;
+        }
+        else
+        {
+            DLog(@"failure saving remainder: %@", error);
+        }
+    }
+    return nil;
 }
 
 @end

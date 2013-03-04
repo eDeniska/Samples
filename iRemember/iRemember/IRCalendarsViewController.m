@@ -114,7 +114,7 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ShowCalendar"])
+    if ([segue.identifier isEqualToString:@"ShowRemainders"])
     {
         IRItemsViewController *vc = segue.destinationViewController;
         vc.calendarIdentifier = [self.calendars[[self.tableView indexPathForCell:sender].row] calendarIdentifier];

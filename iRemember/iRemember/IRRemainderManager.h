@@ -15,14 +15,20 @@ typedef void (^IRRemainderFetchCompletionBlock)(NSArray *remainders);
 
 @interface IRRemainderManager : NSObject
 
-@property (atomic, readonly) BOOL accessGranted;
+// Access to remainders
 
+@property (atomic, readonly) BOOL accessGranted;
 -(void)requestAccess;
 
--(NSArray*)remainderCalendars;
+// Fetch and add remainders
+
 -(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRRemainderFetchCompletionBlock)completionBlock;
+-(EKReminder*)addRemainderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier;
+
+// Sources, calendars
 
 -(NSArray*)sources;
--(void)addCalendarWithTitle:(NSString*)title inSourceWithIdentifier:(NSString*)sourceIdentifier;
+-(NSArray*)remainderCalendars;
+-(EKCalendar*)addCalendarWithTitle:(NSString*)title inSourceWithIdentifier:(NSString*)sourceIdentifier;
 
 @end
