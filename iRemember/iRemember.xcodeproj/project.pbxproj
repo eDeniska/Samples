@@ -21,10 +21,10 @@
 		933703C716E4B48B00DDD42D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703C616E4B48B00DDD42D /* Default.png */; };
 		933703C916E4B48E00DDD42D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703C816E4B48E00DDD42D /* Default@2x.png */; };
 		933703CB16E4B49000DDD42D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703CA16E4B49000DDD42D /* Default-568h@2x.png */; };
-		933703D016E4B6E800DDD42D /* iRememberSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703CC16E4B6E700DDD42D /* iRememberSettings.png */; };
-		933703D116E4B6E800DDD42D /* iRememberSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703CD16E4B6E700DDD42D /* iRememberSettings@2x.png */; };
 		933703D716E4B74A00DDD42D /* iRememberPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703D616E4B74A00DDD42D /* iRememberPhone.png */; };
 		933703D916E4B74F00DDD42D /* iRememberPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703D816E4B74F00DDD42D /* iRememberPhone@2x.png */; };
+		93BD688216E6183D00D70107 /* iRememberSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 93BD688016E6183D00D70107 /* iRememberSettings.png */; };
+		93BD688316E6183D00D70107 /* iRememberSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93BD688116E6183D00D70107 /* iRememberSettings@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,10 +50,10 @@
 		933703C616E4B48B00DDD42D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		933703C816E4B48E00DDD42D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		933703CA16E4B49000DDD42D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		933703CC16E4B6E700DDD42D /* iRememberSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iRememberSettings.png; sourceTree = "<group>"; };
-		933703CD16E4B6E700DDD42D /* iRememberSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iRememberSettings@2x.png"; sourceTree = "<group>"; };
 		933703D616E4B74A00DDD42D /* iRememberPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iRememberPhone.png; sourceTree = SOURCE_ROOT; };
 		933703D816E4B74F00DDD42D /* iRememberPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iRememberPhone@2x.png"; sourceTree = SOURCE_ROOT; };
+		93BD688016E6183D00D70107 /* iRememberSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iRememberSettings.png; sourceTree = SOURCE_ROOT; };
+		93BD688116E6183D00D70107 /* iRememberSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iRememberSettings@2x.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +116,8 @@
 		9337039B16E47C0800DDD42D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				933703CC16E4B6E700DDD42D /* iRememberSettings.png */,
-				933703CD16E4B6E700DDD42D /* iRememberSettings@2x.png */,
+				93BD688016E6183D00D70107 /* iRememberSettings.png */,
+				93BD688116E6183D00D70107 /* iRememberSettings@2x.png */,
 				933703D816E4B74F00DDD42D /* iRememberPhone@2x.png */,
 				933703D616E4B74A00DDD42D /* iRememberPhone.png */,
 				933703CA16E4B49000DDD42D /* Default-568h@2x.png */,
@@ -216,10 +216,10 @@
 				933703C716E4B48B00DDD42D /* Default.png in Resources */,
 				933703C916E4B48E00DDD42D /* Default@2x.png in Resources */,
 				933703CB16E4B49000DDD42D /* Default-568h@2x.png in Resources */,
-				933703D016E4B6E800DDD42D /* iRememberSettings.png in Resources */,
-				933703D116E4B6E800DDD42D /* iRememberSettings@2x.png in Resources */,
 				933703D716E4B74A00DDD42D /* iRememberPhone.png in Resources */,
 				933703D916E4B74F00DDD42D /* iRememberPhone@2x.png in Resources */,
+				93BD688216E6183D00D70107 /* iRememberSettings.png in Resources */,
+				93BD688316E6183D00D70107 /* iRememberSettings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
