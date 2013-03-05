@@ -7,8 +7,8 @@
 //
 
 #import "IRCalendarsViewController.h"
-#import "IRRemainderManager.h"
-#import "IRRemaindersViewController.h"
+#import "IRReminderManager.h"
+#import "IRRemindersViewController.h"
 
 #import <EventKitUI/EventKitUI.h>
 
@@ -102,8 +102,8 @@
 {
     [self.refreshControl beginRefreshing];
 
-    self.calendars = [[IRRemainderManager defaultManager] remainderCalendars];
-    self.navigationItem.rightBarButtonItem.enabled = [IRRemainderManager defaultManager].accessGranted;
+    self.calendars = [[IRReminderManager defaultManager] reminderCalendars];
+    self.navigationItem.rightBarButtonItem.enabled = [IRReminderManager defaultManager].accessGranted;
     
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
@@ -158,9 +158,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"ShowRemainders"])
+    if ([segue.identifier isEqualToString:@"ShowReminders"])
     {
-        IRRemaindersViewController *vc = segue.destinationViewController;
+        IRRemindersViewController *vc = segue.destinationViewController;
         vc.calendarIdentifier = [self.calendars[[self.tableView indexPathForCell:sender].row] calendarIdentifier];
     }
 }

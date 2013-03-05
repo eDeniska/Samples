@@ -34,7 +34,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="Sj5-Zs-MAI" kind="push" identifier="ShowRemainders" id="6vK-J9-8Du"/>
+                                    <segue destination="Sj5-Zs-MAI" kind="push" identifier="ShowReminders" id="6vK-J9-8Du"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -136,16 +136,16 @@
             </objects>
             <point key="canvasLocation" x="630" y="678"/>
         </scene>
-        <!--Remainders View Controller - Items-->
+        <!--Reminders View Controller - Items-->
         <scene sceneID="RKT-WG-sJV">
             <objects>
-                <tableViewController storyboardIdentifier="IRRemaindersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj5-Zs-MAI" customClass="IRRemaindersViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="IRRemindersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj5-Zs-MAI" customClass="IRRemindersViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hIz-hU-KYk">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RemainderCell" textLabel="X0X-OS-jgz" style="IBUITableViewCellStyleDefault" id="G0c-hD-7tQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReminderCell" textLabel="X0X-OS-jgz" style="IBUITableViewCellStyleDefault" id="G0c-hD-7tQ">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -166,7 +166,7 @@
                     <navigationItem key="navigationItem" title="Items" id="oFj-t8-x1E">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="sdh-4v-aCI">
                             <connections>
-                                <segue destination="pmm-yN-p1D" kind="modal" identifier="AddRemainder" id="1mj-Qs-79m"/>
+                                <action selector="addReminder" destination="Sj5-Zs-MAI" id="NP5-Do-tXb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -180,65 +180,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxH-Sv-cEn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055" y="-95"/>
-        </scene>
-        <!--Table View Controller - Add remainder-->
-        <scene sceneID="BcU-bd-96v">
-            <objects>
-                <tableViewController storyboardIdentifier="AddRemainder" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9tf-k5-akc" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="faL-dX-Kwm">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleCell" id="VKR-2a-dyp">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="OcB-wj-B8D">
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="260" id="3eD-0C-Zue"/>
-                                                <constraint firstAttribute="height" constant="30" id="5bc-05-OUu"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                        </textField>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="OcB-wj-B8D" firstAttribute="centerX" secondItem="VKR-2a-dyp" secondAttribute="centerX" type="default" id="AOr-VL-5Au"/>
-                                    <constraint firstItem="OcB-wj-B8D" firstAttribute="top" secondItem="VKR-2a-dyp" secondAttribute="top" constant="8" id="z9Z-sb-ayy"/>
-                                </constraints>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Add remainder" id="lzv-EB-pwV">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="186-sf-SRl"/>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="vKt-0Z-U7Z"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vGg-Sv-hBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1909" y="-95"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="tr6-uP-yFL">
-            <objects>
-                <navigationController storyboardIdentifier="UINavigationController AddRemainder" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pmm-yN-p1D" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ies-Xj-XTt"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yub-Nf-4VC">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="9tf-k5-akc" kind="relationship" relationship="rootViewController" id="bNw-NG-9gZ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OE9-yj-6in" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1499" y="-95"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dE6-Vi-4Sd">
@@ -260,9 +201,10 @@
         <class className="IRCalendarsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/IRCalendarsViewController.h"/>
         </class>
-        <class className="IRRemaindersViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRRemaindersViewController.h"/>
+        <class className="IRRemindersViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IRRemindersViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addReminder"/>
                 <relationship kind="action" name="refresh"/>
             </relationships>
         </class>

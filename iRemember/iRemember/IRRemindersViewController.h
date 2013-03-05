@@ -1,5 +1,5 @@
 //
-//  IRRemaindersViewController.h
+//  IRRemindersViewController.h
 //  iRemember
 //
 //  Created by Danis Tazetdinov on 04.03.13.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IRRemaindersViewController : UITableViewController
+@interface IRRemindersViewController : UITableViewController
 
 @property (nonatomic, copy) NSString *calendarIdentifier;
 

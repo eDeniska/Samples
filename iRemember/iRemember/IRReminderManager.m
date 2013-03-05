@@ -1,16 +1,16 @@
 //
-//  IRRemainderManager.m
+//  IRReminderManager.m
 //  iRemember
 //
 //  Created by Danis Tazetdinov on 04.03.13.
 //  Copyright (c) 2013 Demo. All rights reserved.
 //
 
-#import "IRRemainderManager.h"
+#import "IRReminderManager.h"
 
-NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderManagerAccessGrantedNotification";
+NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManagerAccessGrantedNotification";
 
-@interface IRRemainderManager()
+@interface IRReminderManager()
 
 @property (atomic, readwrite) BOOL accessGranted;
 @property (nonatomic, strong) EKEventStore *store;
@@ -20,14 +20,14 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 
 @end
 
-@implementation IRRemainderManager
+@implementation IRReminderManager
 
-+(IRRemainderManager*)defaultManager
++(IRReminderManager*)defaultManager
 {
     static dispatch_once_t onceToken;
-    static IRRemainderManager *manager;
+    static IRReminderManager *manager;
     dispatch_once(&onceToken, ^{
-        manager = [[IRRemainderManager alloc] init];
+        manager = [[IRReminderManager alloc] init];
     });
     return manager;
 }
@@ -92,7 +92,7 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
                                        self.accessGranted = granted;
                                        if (granted)
                                        {
-                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRRemainderManagerAccessGrantedNotification
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRReminderManagerAccessGrantedNotification
                                                                                                object:self];
                                        }
                                    }];
@@ -110,7 +110,7 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
                                        self.accessGranted = granted;
                                        if (granted)
                                        {
-                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRRemainderManagerAccessGrantedNotification
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRReminderManagerAccessGrantedNotification
                                                                                                object:self];
                                        }
                                        dispatch_semaphore_signal(semaphore);
@@ -122,7 +122,7 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 
 #pragma mark - Calendars
 
--(NSArray*)remainderCalendars
+-(NSArray*)reminderCalendars
 {
     return self.accessGranted ? [self.store calendarsForEntityType:EKEntityTypeReminder] : nil;
 }
@@ -154,9 +154,9 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     return nil;
 }
 
-#pragma mark - Remainder fetch and submit
+#pragma mark - Reminder fetch and submit
 
--(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)calendarIdentifier completion:(IRRemainderFetchCompletionBlock)completionBlock
+-(void)fetchRemindersInCalendarWithIdentifier:(NSString*)calendarIdentifier completion:(IRReminderFetchCompletionBlock)completionBlock
 {
     if (self.accessGranted)
     {
@@ -173,24 +173,24 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     }
 }
 
--(EKReminder*)addRemainderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier
+-(EKReminder*)addReminderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier
 {
     if (self.accessGranted)
     {
-        EKReminder *remainder = [EKReminder reminderWithEventStore:self.store];
-        remainder.calendar = [self.store calendarWithIdentifier:calendarIdentifier];
-        remainder.title = title;
+        EKReminder *reminder = [EKReminder reminderWithEventStore:self.store];
+        reminder.calendar = [self.store calendarWithIdentifier:calendarIdentifier];
+        reminder.title = title;
         
         
         NSError __autoreleasing *error;
         
-        if ([self.store saveReminder:remainder commit:YES error:&error])
+        if ([self.store saveReminder:reminder commit:YES error:&error])
         {
-            return remainder;
+            return reminder;
         }
         else
         {
-            DLog(@"failure saving remainder: %@", error);
+            DLog(@"failure saving reminder: %@", error);
         }
     }
     return nil;

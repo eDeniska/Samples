@@ -34,7 +34,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>NSRemindersUsageDescription</key>
-	<string>iRemember uses remainders to store your lists.</string>
+	<string>iRemember uses reminders to store your lists.</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>

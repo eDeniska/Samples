@@ -7,14 +7,14 @@
 //
 
 #import "IRAppDelegate.h"
-#import "IRRemainderManager.h"
-#import "IRRemaindersViewController.h"
+#import "IRReminderManager.h"
+#import "IRRemindersViewController.h"
 
 @implementation IRAppDelegate
 
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[IRRemainderManager defaultManager] requestAccessAndWait];
+    [[IRReminderManager defaultManager] requestAccessAndWait];
     
     return YES;
 }

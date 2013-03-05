@@ -15,8 +15,8 @@
 		933703A516E47C0800DDD42D /* IRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703A416E47C0800DDD42D /* IRAppDelegate.m */; };
 		933703AE16E47C0800DDD42D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933703AC16E47C0800DDD42D /* MainStoryboard.storyboard */; };
 		933703B816E47D7300DDD42D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933703B716E47D7300DDD42D /* EventKit.framework */; };
-		933703BD16E47E3F00DDD42D /* IRRemaindersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703BC16E47E3F00DDD42D /* IRRemaindersViewController.m */; };
-		933703C116E47E9700DDD42D /* IRRemainderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703C016E47E9700DDD42D /* IRRemainderManager.m */; };
+		933703BD16E47E3F00DDD42D /* IRRemindersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703BC16E47E3F00DDD42D /* IRRemindersViewController.m */; };
+		933703C116E47E9700DDD42D /* IRReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703C016E47E9700DDD42D /* IRReminderManager.m */; };
 		933703C516E4AF2A00DDD42D /* IRCalendarsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933703C416E4AF2A00DDD42D /* IRCalendarsViewController.m */; };
 		933703C716E4B48B00DDD42D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703C616E4B48B00DDD42D /* Default.png */; };
 		933703C916E4B48E00DDD42D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933703C816E4B48E00DDD42D /* Default@2x.png */; };
@@ -40,10 +40,10 @@
 		933703A416E47C0800DDD42D /* IRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IRAppDelegate.m; sourceTree = "<group>"; };
 		933703AD16E47C0800DDD42D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		933703B716E47D7300DDD42D /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
-		933703BB16E47E3F00DDD42D /* IRRemaindersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRRemaindersViewController.h; sourceTree = "<group>"; };
-		933703BC16E47E3F00DDD42D /* IRRemaindersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRRemaindersViewController.m; sourceTree = "<group>"; };
-		933703BF16E47E9700DDD42D /* IRRemainderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRRemainderManager.h; sourceTree = "<group>"; };
-		933703C016E47E9700DDD42D /* IRRemainderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRRemainderManager.m; sourceTree = "<group>"; };
+		933703BB16E47E3F00DDD42D /* IRRemindersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRRemindersViewController.h; sourceTree = "<group>"; };
+		933703BC16E47E3F00DDD42D /* IRRemindersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRRemindersViewController.m; sourceTree = "<group>"; };
+		933703BF16E47E9700DDD42D /* IRReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRReminderManager.h; sourceTree = "<group>"; };
+		933703C016E47E9700DDD42D /* IRReminderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRReminderManager.m; sourceTree = "<group>"; };
 		933703C216E49F2E00DDD42D /* Debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debug.h; sourceTree = "<group>"; };
 		933703C316E4AF2A00DDD42D /* IRCalendarsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRCalendarsViewController.h; sourceTree = "<group>"; };
 		933703C416E4AF2A00DDD42D /* IRCalendarsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IRCalendarsViewController.m; sourceTree = "<group>"; };
@@ -134,8 +134,8 @@
 		933703B916E47DA600DDD42D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				933703BB16E47E3F00DDD42D /* IRRemaindersViewController.h */,
-				933703BC16E47E3F00DDD42D /* IRRemaindersViewController.m */,
+				933703BB16E47E3F00DDD42D /* IRRemindersViewController.h */,
+				933703BC16E47E3F00DDD42D /* IRRemindersViewController.m */,
 				933703C316E4AF2A00DDD42D /* IRCalendarsViewController.h */,
 				933703C416E4AF2A00DDD42D /* IRCalendarsViewController.m */,
 			);
@@ -153,8 +153,8 @@
 		933703BE16E47E7A00DDD42D /* Communication */ = {
 			isa = PBXGroup;
 			children = (
-				933703BF16E47E9700DDD42D /* IRRemainderManager.h */,
-				933703C016E47E9700DDD42D /* IRRemainderManager.m */,
+				933703BF16E47E9700DDD42D /* IRReminderManager.h */,
+				933703C016E47E9700DDD42D /* IRReminderManager.m */,
 			);
 			name = Communication;
 			sourceTree = "<group>";
@@ -232,8 +232,8 @@
 			files = (
 				933703A116E47C0800DDD42D /* main.m in Sources */,
 				933703A516E47C0800DDD42D /* IRAppDelegate.m in Sources */,
-				933703BD16E47E3F00DDD42D /* IRRemaindersViewController.m in Sources */,
-				933703C116E47E9700DDD42D /* IRRemainderManager.m in Sources */,
+				933703BD16E47E3F00DDD42D /* IRRemindersViewController.m in Sources */,
+				933703C116E47E9700DDD42D /* IRReminderManager.m in Sources */,
 				933703C516E4AF2A00DDD42D /* IRCalendarsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
