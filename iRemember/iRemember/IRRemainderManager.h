@@ -24,15 +24,19 @@ typedef void (^IRRemainderFetchCompletionBlock)(NSArray *remainders);
 
 @property (atomic, readonly) BOOL accessGranted;
 -(void)requestAccess;
+-(void)requestAccessAndWait;
+
 
 // Verification methods
 
 -(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier;
 
+
 // Fetch and add remainders
 
 -(void)fetchRemaindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRRemainderFetchCompletionBlock)completionBlock;
 -(EKReminder*)addRemainderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier;
+
 
 // Sources, calendars
 

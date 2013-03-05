@@ -10,22 +10,57 @@
 #import "IRRemainderManager.h"
 #import "IRRemaindersViewController.h"
 
-@interface IRCalendarsViewController ()
+#import <EventKitUI/EventKitUI.h>
+
+@interface IRCalendarsViewController () <UIDataSourceModelAssociation>
 
 @property (nonatomic, strong) NSArray *calendars;
+
+-(void)becomeActive:(NSNotification*)notification;
 
 @end
 
 @implementation IRCalendarsViewController
 
--(void)resignActive:(NSNotification*)notification
+-(void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
-#warning TODO: disable UI
+    DLog(@"coder");
+    
+    [super encodeRestorableStateWithCoder:coder];
 }
 
--(void)accessGranted:(NSNotification*)notification
+-(void)decodeRestorableStateWithCoder:(NSCoder *)coder
 {
-#warning TODO: enable UI
+    [super decodeRestorableStateWithCoder:coder];
+    DLog(@"coder");
+}
+
+- (NSString *) modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view
+{
+    DLog(@"idx: %@, %@", idx, self.calendars);
+    EKCalendar *calendar = [self.calendars objectAtIndex:idx.row];
+    return calendar.calendarIdentifier;
+}
+
+- (NSIndexPath *) indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view
+{
+    DLog(@"identifier %@, %@", identifier, self.calendars);
+    NSIndexPath * __block indexPath;
+    [self.calendars enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        EKCalendar *calendar = obj;
+        if ([calendar.calendarIdentifier isEqualToString:identifier])
+        {
+            indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+            *stop = YES;
+        }
+    }];
+    
+    return indexPath;
+}
+
+
+-(void)becomeActive:(NSNotification*)notification
+{
     [self refresh];
 }
 
@@ -35,17 +70,27 @@
     
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(resignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:nil];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (!self.calendars)
+    {
+        [self refresh];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(accessGranted:)
-                                                 name:IRRemainderManagerAccessGrantedNotification
+                                             selector:@selector(becomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-     
-    [[IRRemainderManager defaultManager] requestAccess];
+
+    [super viewWillAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)dealloc
@@ -58,6 +103,7 @@
     [self.refreshControl beginRefreshing];
 
     self.calendars = [[IRRemainderManager defaultManager] remainderCalendars];
+    self.navigationItem.rightBarButtonItem.enabled = [IRRemainderManager defaultManager].accessGranted;
     
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];

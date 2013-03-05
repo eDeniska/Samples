@@ -99,6 +99,27 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     }
 }
 
+-(void)requestAccessAndWait
+{
+    if (!self.accessGranted)
+    {
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+        
+        [self.store requestAccessToEntityType:EKEntityTypeReminder
+                                   completion:^(BOOL granted, NSError *error) {
+                                       self.accessGranted = granted;
+                                       if (granted)
+                                       {
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRRemainderManagerAccessGrantedNotification
+                                                                                               object:self];
+                                       }
+                                       dispatch_semaphore_signal(semaphore);
+                                   }];
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    }
+}
+
+
 #pragma mark - Calendars
 
 -(NSArray*)remainderCalendars
@@ -140,10 +161,11 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
     if (self.accessGranted)
     {
         EKCalendar *calendar = [self.store calendarWithIdentifier:calendarIdentifier];
-        [self.store fetchRemindersMatchingPredicate:[self.store predicateForIncompleteRemindersWithDueDateStarting:nil
-                                                                                                            ending:nil
-                                                                                                         calendars:@[calendar]]
-                                         completion:completionBlock];
+        NSPredicate *predicate = [self.store predicateForIncompleteRemindersWithDueDateStarting:nil
+                                                                                         ending:nil
+                                                                                      calendars:@[calendar]];
+
+        [self.store fetchRemindersMatchingPredicate:predicate completion:completionBlock];
     }
     else if (completionBlock)
     {

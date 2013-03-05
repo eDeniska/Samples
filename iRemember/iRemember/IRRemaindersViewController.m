@@ -11,13 +11,12 @@
 
 #define kCalendarIdentifierKey @"CalendarIdentifier"
 
-@interface IRRemaindersViewController () <UIViewControllerRestoration>
+@interface IRRemaindersViewController () <UIDataSourceModelAssociation>
 
 @property (nonatomic, strong) NSArray *remainders;
 
 -(IBAction)refresh;
--(void)resignActive:(NSNotification*)notification;
--(void)accessGranted:(NSNotification*)notification;
+-(void)becomeActive:(NSNotification*)notification;
 
 @end
 
@@ -28,23 +27,29 @@
 
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
+    DLog(@"encoding %@", self.calendarIdentifier);
     [coder encodeObject:self.calendarIdentifier forKey:kCalendarIdentifierKey];
+    [super encodeRestorableStateWithCoder:coder];
 }
 
 -(void)decodeRestorableStateWithCoder:(NSCoder *)coder
 {
+    [super decodeRestorableStateWithCoder:coder];
+    
     self.calendarIdentifier = [coder decodeObjectForKey:kCalendarIdentifierKey];
+    DLog(@"decoded %@", self.calendarIdentifier);
 }
 
-+(UIViewController *)viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents
-                                                           coder:(NSCoder *)coder
++ (UIViewController *) viewControllerWithRestorationIdentifierPath:(NSArray *)identifierComponents coder:(NSCoder *)coder
 {
+    UIStoryboard *storyboard = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
     NSString *calendarIdentifier = [coder decodeObjectForKey:kCalendarIdentifierKey];
+    DLog(@"about to restore VC with %@, %@", calendarIdentifier, identifierComponents);
     if ([[IRRemainderManager defaultManager] isCalendarIdentifierValid:calendarIdentifier])
-    {
-        UIStoryboard *storyboard = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
+    { 
         IRRemaindersViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"IRRemaindersViewController"];
         vc.calendarIdentifier = calendarIdentifier;
+        DLog(@"vc is ready %@ (%@)", vc, storyboard);
         return vc;
     }
     else
@@ -53,19 +58,32 @@
     }
 }
 
--(void)resignActive:(NSNotification*)notification
+#warning Model identifiers are queried before remainders are fetched
+- (NSString *) modelIdentifierForElementAtIndexPath:(NSIndexPath *)idx inView:(UIView *)view
 {
-#warning TODO: disable UI
-    // disable UI
+    DLog(@"idx: %@, %@", idx, self.remainders);
+    EKReminder *remainder = [self.remainders objectAtIndex:idx.row];
+    return remainder.calendarItemIdentifier;
 }
 
--(void)accessGranted:(NSNotification*)notification
+- (NSIndexPath *) indexPathForElementWithModelIdentifier:(NSString *)identifier inView:(UIView *)view
 {
-#warning TODO: enable UI
-    if (!self.calendarIdentifier)
-    {
-        self.calendarIdentifier = [[[[IRRemainderManager defaultManager] remainderCalendars] lastObject] calendarIdentifier];
-    }
+    DLog(@"identifier %@, %@", identifier, self.remainders);
+    NSIndexPath * __block indexPath;
+    [self.remainders enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        EKReminder *remainder = obj;
+        if ([remainder.calendarItemIdentifier isEqualToString:identifier])
+        {
+            indexPath = [NSIndexPath indexPathForRow:idx inSection:0];
+            *stop = YES;
+        }
+    }];
+    
+    return indexPath;
+}
+
+-(void)becomeActive:(NSNotification*)notification
+{
     [self refresh];
 }
 
@@ -76,17 +94,27 @@
     self.restorationClass = [self class];
 
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (!self.remainders)
+    {
+        [self refresh];
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(resignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
+                                             selector:@selector(becomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
                                                object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(accessGranted:)
-                                                 name:IRRemainderManagerAccessGrantedNotification
-                                               object:nil];
-    [[IRRemainderManager defaultManager] requestAccess];
+
+    [super viewWillAppear:animated];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)dealloc
@@ -97,14 +125,26 @@
 -(IBAction)refresh
 {
     [self.refreshControl beginRefreshing];
-    [[IRRemainderManager defaultManager] fetchRemaindersInCalendarWithIdentifier:self.calendarIdentifier
-                                                                      completion:^(NSArray *remainders) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.remainders = remainders;
-            [self.tableView reloadData];
-            [self.refreshControl endRefreshing];
-        });
-    }];
+
+#warning Calendar identifier could be invalid
+    if (self.calendarIdentifier)
+    {
+        [[IRRemainderManager defaultManager] fetchRemaindersInCalendarWithIdentifier:self.calendarIdentifier completion:^(NSArray *remainders) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.remainders = remainders;
+                self.navigationItem.rightBarButtonItem.enabled = [IRRemainderManager defaultManager].accessGranted;
+                [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+            });
+        }];
+    }
+    else
+    {
+        self.navigationItem.rightBarButtonItem.enabled = NO;
+        self.remainders = nil;
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }
 }
 
 #pragma mark - Table view data source

@@ -8,7 +8,7 @@
         <scene sceneID="QLN-Wl-v4u">
             <objects>
                 <tableViewController storyboardIdentifier="IRCalendarsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wjI-AN-BwK" customClass="IRCalendarsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IHK-VF-yGG">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IHK-VF-yGG">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +64,7 @@
         <!--Table View Controller - Add calendar-->
         <scene sceneID="p9F-NQ-3E3">
             <objects>
-                <tableViewController id="vGz-5u-JYA" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddCalendar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vGz-5u-JYA" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="DRz-Aj-sQ4">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
         <!--Navigation Controller-->
         <scene sceneID="oEV-Fw-g0y">
             <objects>
-                <navigationController definesPresentationContext="YES" id="Fu6-ca-fSt" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UINavigationControllerAddCalendar" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fu6-ca-fSt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="R7U-54-Utw">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -140,7 +140,7 @@
         <scene sceneID="RKT-WG-sJV">
             <objects>
                 <tableViewController storyboardIdentifier="IRRemaindersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Sj5-Zs-MAI" customClass="IRRemaindersViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hIz-hU-KYk">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" restorationIdentifier="" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hIz-hU-KYk">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,14 +184,14 @@
         <!--Table View Controller - Add remainder-->
         <scene sceneID="BcU-bd-96v">
             <objects>
-                <tableViewController id="9tf-k5-akc" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddRemainder" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9tf-k5-akc" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="faL-dX-Kwm">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TitleCell" id="VKR-2a-dyp">
-                                <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -213,15 +213,6 @@
                                     <constraint firstItem="OcB-wj-B8D" firstAttribute="top" secondItem="VKR-2a-dyp" secondAttribute="top" constant="8" id="z9Z-sb-ayy"/>
                                 </constraints>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="weD-Va-iCy">
-                                <rect key="frame" x="0.0" y="91" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add remainder" id="lzv-EB-pwV">
@@ -236,7 +227,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tr6-uP-yFL">
             <objects>
-                <navigationController definesPresentationContext="YES" id="pmm-yN-p1D" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UINavigationController AddRemainder" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pmm-yN-p1D" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ies-Xj-XTt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yub-Nf-4VC">
                         <autoresizingMask key="autoresizingMask"/>
@@ -253,7 +244,7 @@
         <scene sceneID="dE6-Vi-4Sd">
             <objects>
                 <navigationController storyboardIdentifier="UINavigationControllerMain" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uQD-fV-CIO" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZXJ-te-uPg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" restorationIdentifier="" id="ZXJ-te-uPg">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
