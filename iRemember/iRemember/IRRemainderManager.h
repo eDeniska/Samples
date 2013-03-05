@@ -15,6 +15,11 @@ typedef void (^IRRemainderFetchCompletionBlock)(NSArray *remainders);
 
 @interface IRRemainderManager : NSObject
 
+// singleton
+
++(IRRemainderManager*)defaultManager;
+
+
 // Access to remainders
 
 @property (atomic, readonly) BOOL accessGranted;
@@ -22,7 +27,7 @@ typedef void (^IRRemainderFetchCompletionBlock)(NSArray *remainders);
 
 // Verification methods
 
-+(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier;
+-(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier;
 
 // Fetch and add remainders
 

@@ -14,7 +14,6 @@
 @interface IRRemaindersViewController () <UIViewControllerRestoration>
 
 @property (nonatomic, strong) NSArray *remainders;
-@property (nonatomic, strong) IRRemainderManager *remainderManager;
 
 -(IBAction)refresh;
 -(void)resignActive:(NSNotification*)notification;
@@ -41,7 +40,7 @@
                                                            coder:(NSCoder *)coder
 {
     NSString *calendarIdentifier = [coder decodeObjectForKey:kCalendarIdentifierKey];
-    if ([IRRemainderManager isCalendarIdentifierValid:calendarIdentifier])
+    if ([[IRRemainderManager defaultManager] isCalendarIdentifierValid:calendarIdentifier])
     {
         UIStoryboard *storyboard = [coder decodeObjectForKey:UIStateRestorationViewControllerStoryboardKey];
         IRRemaindersViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"IRRemaindersViewController"];
@@ -65,7 +64,7 @@
 #warning TODO: enable UI
     if (!self.calendarIdentifier)
     {
-        self.calendarIdentifier = [[[self.remainderManager remainderCalendars] lastObject] calendarIdentifier];
+        self.calendarIdentifier = [[[[IRRemainderManager defaultManager] remainderCalendars] lastObject] calendarIdentifier];
     }
     [self refresh];
 }
@@ -76,8 +75,6 @@
     
     self.restorationClass = [self class];
 
-    self.remainderManager = [[IRRemainderManager alloc] init];
-    
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -88,8 +85,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accessGranted:)
                                                  name:IRRemainderManagerAccessGrantedNotification
-                                               object:self.remainderManager];
-    [self.remainderManager requestAccess];
+                                               object:nil];
+    [[IRRemainderManager defaultManager] requestAccess];
 }
 
 -(void)dealloc
@@ -100,8 +97,8 @@
 -(IBAction)refresh
 {
     [self.refreshControl beginRefreshing];
-    [self.remainderManager fetchRemaindersInCalendarWithIdentifier:self.calendarIdentifier
-                                                        completion:^(NSArray *remainders) {
+    [[IRRemainderManager defaultManager] fetchRemaindersInCalendarWithIdentifier:self.calendarIdentifier
+                                                                      completion:^(NSArray *remainders) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.remainders = remainders;
             [self.tableView reloadData];

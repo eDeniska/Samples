@@ -22,6 +22,16 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 
 @implementation IRRemainderManager
 
++(IRRemainderManager*)defaultManager
+{
+    static dispatch_once_t onceToken;
+    static IRRemainderManager *manager;
+    dispatch_once(&onceToken, ^{
+        manager = [[IRRemainderManager alloc] init];
+    });
+    return manager;
+}
+
 -(id)init
 {
     self = [super init];
@@ -66,13 +76,10 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 
 #pragma mark - Verification methods
 
-+(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier
+-(BOOL)isCalendarIdentifierValid:(NSString*)calendarIdentifier
 {
-    EKEventStore *store = [[EKEventStore alloc] init];
-    return ((calendarIdentifier) && ([store calendarWithIdentifier:calendarIdentifier])) ? YES : NO;
+    return ((self.accessGranted) && (calendarIdentifier) && ([self.store calendarWithIdentifier:calendarIdentifier]));
 }
-
-
 
 #pragma mark - Access management
 
@@ -96,13 +103,7 @@ NSString * const IRRemainderManagerAccessGrantedNotification = @"IRRemainderMana
 
 -(NSArray*)remainderCalendars
 {
-    NSArray *calendars;
-    if (self.accessGranted)
-    {
-        calendars = [self.store calendarsForEntityType:EKEntityTypeReminder];
-    }
-    
-    return calendars;
+    return self.accessGranted ? [self.store calendarsForEntityType:EKEntityTypeReminder] : nil;
 }
 
 -(NSArray*)sources

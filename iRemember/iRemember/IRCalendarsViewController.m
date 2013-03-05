@@ -13,7 +13,6 @@
 @interface IRCalendarsViewController ()
 
 @property (nonatomic, strong) NSArray *calendars;
-@property (nonatomic, strong) IRRemainderManager *remainderManager;
 
 @end
 
@@ -34,8 +33,6 @@
 {
     [super viewDidLoad];
     
-    self.remainderManager = [[IRRemainderManager alloc] init];
-    
     [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -46,8 +43,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(accessGranted:)
                                                  name:IRRemainderManagerAccessGrantedNotification
-                                               object:self.remainderManager];
-    [self.remainderManager requestAccess];
+                                               object:nil];
+     
+    [[IRRemainderManager defaultManager] requestAccess];
 }
 
 -(void)dealloc
@@ -59,7 +57,7 @@
 {
     [self.refreshControl beginRefreshing];
 
-    self.calendars = [self.remainderManager remainderCalendars];
+    self.calendars = [[IRRemainderManager defaultManager] remainderCalendars];
     
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
