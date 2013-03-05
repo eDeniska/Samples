@@ -153,10 +153,13 @@
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Add reminder", @"Add reminder title")
                                                         message:nil
                                                        delegate:self
-                                              cancelButtonTitle:NSLocalizedString(@"Cance", @"Cancel button")
+                                              cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button")
                                               otherButtonTitles:NSLocalizedString(@"Add", @"Add button"), nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [alertView textFieldAtIndex:0].placeholder = NSLocalizedString(@"Title", @"Title placeholder");
+    UITextField *textField = [alertView textFieldAtIndex:0];
+    textField.placeholder = NSLocalizedString(@"Item title", @"Item title placeholder");
+    textField.autocapitalizationType = UITextAutocapitalizationTypeSentences;
+    textField.autocorrectionType = UITextAutocorrectionTypeYes;
     [alertView show];
 }
 
@@ -165,8 +168,7 @@
     if (buttonIndex != alertView.cancelButtonIndex)
     {
         NSString *title = [alertView textFieldAtIndex:0].text;
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            EKReminder *reminder = [[IRReminderManager defaultManager] addReminderWithTitle:title inCalendarWithIdentifier:self.calendarIdentifier];
+        [[IRReminderManager defaultManager] addReminderWithTitle:title inCalendarWithIdentifier:self.calendarIdentifier completion:^(EKReminder *reminder) {
             if (reminder)
             {
                 self.reminders = [self.reminders arrayByAddingObject:reminder];
@@ -175,7 +177,7 @@
                                           withRowAnimation:UITableViewRowAnimationAutomatic];
                 });
             }
-        });
+        }];
     }
 }
 
@@ -221,8 +223,22 @@
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        
+        EKReminder *reminder = self.reminders[indexPath.row];
+        [[IRReminderManager defaultManager] removeReminder:reminder withCompletion:^(BOOL result) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (result)
+                {
+                    NSMutableArray *reminders = [self.reminders mutableCopy];
+                    [reminders removeObjectAtIndex:indexPath.row];
+                    self.reminders = [reminders copy];
+                    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                }
+#warning Signal if delete fails
+            });
+        }];
+        
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert)
     {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

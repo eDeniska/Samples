@@ -8,14 +8,10 @@
 
 #import "IRReminderManager.h"
 
-NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManagerAccessGrantedNotification";
-
 @interface IRReminderManager()
 
-@property (atomic, readwrite) BOOL accessGranted;
 @property (nonatomic, strong) EKEventStore *store;
 
--(void)resignActive:(NSNotification*)notification;
 -(void)becomeActive:(NSNotification*)notification;
 
 @end
@@ -38,21 +34,12 @@ NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManage
     if (self)
     {
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(resignActive:)
-                                                     name:UIApplicationWillResignActiveNotification
-                                                   object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(becomeActive:)
                                                      name:UIApplicationDidBecomeActiveNotification
                                                    object:nil];
     }
     
     return self;
-}
-
--(void)resignActive:(NSNotification*)notification
-{
-    self.accessGranted = NO;
 }
 
 -(void)becomeActive:(NSNotification*)notification
@@ -88,15 +75,13 @@ NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManage
     if (!self.accessGranted)
     {
         [self.store requestAccessToEntityType:EKEntityTypeReminder
-                                   completion:^(BOOL granted, NSError *error) {
-                                       self.accessGranted = granted;
-                                       if (granted)
-                                       {
-                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRReminderManagerAccessGrantedNotification
-                                                                                               object:self];
-                                       }
-                                   }];
+                                   completion:NULL];
     }
+}
+
+-(BOOL)accessGranted
+{
+    return ([EKEventStore authorizationStatusForEntityType:EKEntityTypeReminder] == EKAuthorizationStatusAuthorized);
 }
 
 -(void)requestAccessAndWait
@@ -107,12 +92,6 @@ NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManage
         
         [self.store requestAccessToEntityType:EKEntityTypeReminder
                                    completion:^(BOOL granted, NSError *error) {
-                                       self.accessGranted = granted;
-                                       if (granted)
-                                       {
-                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRReminderManagerAccessGrantedNotification
-                                                                                               object:self];
-                                       }
                                        dispatch_semaphore_signal(semaphore);
                                    }];
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -173,27 +152,56 @@ NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManage
     }
 }
 
--(EKReminder*)addReminderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier
+-(void)addReminderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier completion:(IRReminderAddCompletionBlock)completionBlock
 {
     if (self.accessGranted)
     {
-        EKReminder *reminder = [EKReminder reminderWithEventStore:self.store];
-        reminder.calendar = [self.store calendarWithIdentifier:calendarIdentifier];
-        reminder.title = title;
-        
-        
-        NSError __autoreleasing *error;
-        
-        if ([self.store saveReminder:reminder commit:YES error:&error])
-        {
-            return reminder;
-        }
-        else
-        {
-            DLog(@"failure saving reminder: %@", error);
-        }
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            EKReminder *reminder = [EKReminder reminderWithEventStore:self.store];
+            reminder.calendar = [self.store calendarWithIdentifier:calendarIdentifier];
+            reminder.title = title;
+            
+            NSError __autoreleasing *error;
+            
+            if (![self.store saveReminder:reminder commit:YES error:&error])
+            {
+                DLog(@"failure saving reminder: %@", error);
+            }
+            if (completionBlock)
+            {
+                completionBlock(reminder);
+            }
+        });
     }
-    return nil;
+    else if (completionBlock)
+    {
+        completionBlock(NO);
+    }
 }
+
+-(void)removeReminder:(EKReminder*)reminder withCompletion:(IRReminderOperationCompletionBlock)completionBlock
+{
+    if (self.accessGranted)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSError __autoreleasing *error;
+            
+            BOOL result = [self.store removeReminder:reminder commit:YES error:&error];
+            if (!result)
+            {
+                DLog(@"failure deleting reminder: %@", error);
+            }
+            if (completionBlock)
+            {
+                completionBlock(result);
+            }
+        });
+    }
+    else if (completionBlock)
+    {
+        completionBlock(NO);
+    }
+}
+
 
 @end

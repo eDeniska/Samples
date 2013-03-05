@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <EventKit/EventKit.h>
 
-extern NSString * const IRReminderManagerAccessGrantedNotification;
-
 typedef void (^IRReminderFetchCompletionBlock)(NSArray *reminders);
+typedef void (^IRReminderAddCompletionBlock)(EKReminder *reminder);
+typedef void (^IRReminderOperationCompletionBlock)(BOOL result);
 
 @interface IRReminderManager : NSObject
 
@@ -35,7 +35,8 @@ typedef void (^IRReminderFetchCompletionBlock)(NSArray *reminders);
 // Fetch and add reminders
 
 -(void)fetchRemindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRReminderFetchCompletionBlock)completionBlock;
--(EKReminder*)addReminderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier;
+-(void)addReminderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier completion:(IRReminderAddCompletionBlock)completionBlock;
+-(void)removeReminder:(EKReminder*)reminder withCompletion:(IRReminderOperationCompletionBlock)completionBlock;
 
 
 // Sources, calendars
