@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSArray *calendars;
 
 -(void)becomeActive:(NSNotification*)notification;
+-(void)accessGramted:(NSNotification*)notification;
 
 @end
 
@@ -64,6 +65,11 @@
     [self refresh];
 }
 
+-(void)accessGramted:(NSNotification*)notification
+{
+    [self refresh];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -82,6 +88,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(becomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(accessGranted:)
+                                                 name:IRReminderManagerAccessGrantedNotification
                                                object:nil];
 
     [super viewWillAppear:animated];

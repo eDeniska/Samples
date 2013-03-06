@@ -14,21 +14,21 @@
 
 -(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[IRReminderManager defaultManager] requestAccessAndWait];
-    
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[IRReminderManager defaultManager] requestAccess];
     return YES;
 }
 
 -(BOOL)application:(UIApplication *)application shouldRestoreApplicationState:(NSCoder *)coder
 {
+    // only restoring, if access was granted
     DLog(@"coder %@", coder);
-    return YES;
+    return [IRReminderManager defaultManager].accessGranted;
 }
 
 -(BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder

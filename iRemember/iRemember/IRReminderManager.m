@@ -8,6 +8,8 @@
 
 #import "IRReminderManager.h"
 
+NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManagerAccessGrantedNotification";
+
 @interface IRReminderManager()
 
 @property (nonatomic, strong) EKEventStore *store;
@@ -18,7 +20,7 @@
 
 @implementation IRReminderManager
 
-+(IRReminderManager*)defaultManager
++(instancetype)defaultManager
 {
     static dispatch_once_t onceToken;
     static IRReminderManager *manager;
@@ -28,7 +30,7 @@
     return manager;
 }
 
--(id)init
+-(instancetype)init
 {
     self = [super init];
     if (self)
@@ -75,7 +77,17 @@
     if (!self.accessGranted)
     {
         [self.store requestAccessToEntityType:EKEntityTypeReminder
-                                   completion:NULL];
+                                   completion:^(BOOL granted, NSError *error) {
+                                       if (granted)
+                                       {
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRReminderManagerAccessGrantedNotification
+                                                                                               object:self];
+                                       }
+                                       if (error)
+                                       {
+                                           DLog(@"failure requesting access: %@", error);
+                                       }
+                                   }];
     }
 }
 
@@ -93,6 +105,15 @@
         [self.store requestAccessToEntityType:EKEntityTypeReminder
                                    completion:^(BOOL granted, NSError *error) {
                                        dispatch_semaphore_signal(semaphore);
+                                       if (granted)
+                                       {
+                                           [[NSNotificationCenter defaultCenter] postNotificationName:IRReminderManagerAccessGrantedNotification
+                                                                                               object:self];
+                                       }
+                                       if (error)
+                                       {
+                                           DLog(@"failure requesting access: %@", error);
+                                       }
                                    }];
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     }
@@ -119,7 +140,7 @@
         calendar.title = title;
         calendar.source = [self.store sourceWithIdentifier:sourceIdentifier];
         
-        NSError __autoreleasing *error;
+        NSError * __autoreleasing error;
         
         if ([self.store saveCalendar:calendar commit:YES error:&error])
         {
@@ -161,7 +182,7 @@
             reminder.calendar = [self.store calendarWithIdentifier:calendarIdentifier];
             reminder.title = title;
             
-            NSError __autoreleasing *error;
+            NSError * __autoreleasing error;
             
             if (![self.store saveReminder:reminder commit:YES error:&error])
             {
@@ -175,7 +196,7 @@
     }
     else if (completionBlock)
     {
-        completionBlock(NO);
+        completionBlock(nil);
     }
 }
 
@@ -184,7 +205,7 @@
     if (self.accessGranted)
     {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            NSError __autoreleasing *error;
+            NSError * __autoreleasing error;
             
             BOOL result = [self.store removeReminder:reminder commit:YES error:&error];
             if (!result)

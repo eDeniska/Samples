@@ -13,6 +13,8 @@ typedef void (^IRReminderFetchCompletionBlock)(NSArray *reminders);
 typedef void (^IRReminderAddCompletionBlock)(EKReminder *reminder);
 typedef void (^IRReminderOperationCompletionBlock)(BOOL result);
 
+extern NSString * const IRReminderManagerAccessGrantedNotification;
+
 @interface IRReminderManager : NSObject
 
 // singleton
