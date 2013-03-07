@@ -204,8 +204,10 @@
     
     EKReminder *reminder = self.reminders[indexPath.row];
     
-    cell.textLabel.text = reminder.title;
-    
+//    cell.textLabel.text = reminder.title;
+//    cell.textLabel.textColor = reminder.completed ? [UIColor lightGrayColor] : [UIColor blackColor];
+    NSDictionary *attributes = reminder.completed ? @{ NSStrikethroughStyleAttributeName : @YES } : @{};
+    cell.textLabel.attributedText = [[NSAttributedString alloc] initWithString:reminder.title attributes:attributes];
     
     return cell;
 }
@@ -250,6 +252,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    EKReminder *reminder = self.reminders[indexPath.row];
+    reminder.completed = !reminder.completed;
+    [tableView reloadRowsAtIndexPaths:@[ indexPath ] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [[IRReminderManager defaultManager] saveReminder:reminder withCompletion:^(BOOL result) {
+        if (!result)
+        {
+#warning Signal if save fails
+        }
+    }];
 }
 
 

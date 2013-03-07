@@ -224,5 +224,29 @@ NSString * const IRReminderManagerAccessGrantedNotification = @"IRReminderManage
     }
 }
 
+-(void)saveReminder:(EKReminder*)reminder withCompletion:(IRReminderOperationCompletionBlock)completionBlock
+{
+    if (self.accessGranted)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            NSError * __autoreleasing error;
+            
+            BOOL result = [self.store saveReminder:reminder commit:YES error:&error];
+            if (!result)
+            {
+                DLog(@"failure saving reminder: %@", error);
+            }
+            if (completionBlock)
+            {
+                completionBlock(result);
+            }
+        });
+    }
+    else if (completionBlock)
+    {
+        completionBlock(NO);
+    }
+}
+
 
 @end

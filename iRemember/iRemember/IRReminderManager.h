@@ -39,6 +39,7 @@ extern NSString * const IRReminderManagerAccessGrantedNotification;
 -(void)fetchRemindersInCalendarWithIdentifier:(NSString*)identifier completion:(IRReminderFetchCompletionBlock)completionBlock;
 -(void)addReminderWithTitle:(NSString*)title inCalendarWithIdentifier:(NSString*)calendarIdentifier completion:(IRReminderAddCompletionBlock)completionBlock;
 -(void)removeReminder:(EKReminder*)reminder withCompletion:(IRReminderOperationCompletionBlock)completionBlock;
+-(void)saveReminder:(EKReminder*)reminder withCompletion:(IRReminderOperationCompletionBlock)completionBlock;
 
 
 // Sources, calendars
