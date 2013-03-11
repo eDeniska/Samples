@@ -29,7 +29,10 @@
 -(void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
     DLog(@"encoding %@", self.calendarIdentifier);
-    [coder encodeObject:self.calendarIdentifier forKey:kCalendarIdentifierKey];
+    if (self.calendarIdentifier)
+    {
+        [coder encodeObject:self.calendarIdentifier forKey:kCalendarIdentifierKey];
+    }
     [super encodeRestorableStateWithCoder:coder];
 }
 
