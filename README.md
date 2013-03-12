@@ -7,4 +7,6 @@ ImageManage - sample project working with image pixel data - get pixel bytes and
 
 SecureData - sample project working with keychain. Some parts of code could be reused (as simple keychain wrapper).
 
-iRemember - sample project demonstrating Remainders usage.
+YATorch - yet another torch. Sample on AVFoundation framework - manipulating torch.
+
+iRemember - sample project demonstrating reminders usage (EventKit framework).
