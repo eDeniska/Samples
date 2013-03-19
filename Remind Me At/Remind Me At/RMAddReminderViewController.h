@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import "RMGeofencedReminderAnnotation.h"
 
 @interface RMAddReminderViewController : UITableViewController
+
+@property (strong, nonatomic) RMGeofencedReminderAnnotation *reminderAnnotation;
 
 @end

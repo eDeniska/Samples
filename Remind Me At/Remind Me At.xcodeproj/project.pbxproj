@@ -7,25 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9359680C16F888A400FDD8AA /* RMShowReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359680B16F888A400FDD8AA /* RMShowReminderViewController.m */; };
+		939803BC16F8793500EEE5E5 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 939803BB16F8793500EEE5E5 /* Default.png */; };
+		939803BE16F8793B00EEE5E5 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 939803BD16F8793B00EEE5E5 /* Default@2x.png */; };
+		939803C016F8793F00EEE5E5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 939803BF16F8793F00EEE5E5 /* Default-568h@2x.png */; };
+		939975AF16F843E200E09AF3 /* RMGeofencedReminderAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 939975AE16F843E200E09AF3 /* RMGeofencedReminderAnnotation.m */; };
+		939975B116F84BFE00E09AF3 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939975B016F84BFE00E09AF3 /* AddressBookUI.framework */; };
+		939975B416F85D3900E09AF3 /* RMReminderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 939975B316F85D3900E09AF3 /* RMReminderManager.m */; };
+		939975B616F863D200E09AF3 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939975B516F863D200E09AF3 /* EventKitUI.framework */; };
+		93D6765616F86E78002A32B9 /* RemindMeAtPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D6765216F86E78002A32B9 /* RemindMeAtPhone.png */; };
+		93D6765716F86E78002A32B9 /* RemindMeAtPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D6765316F86E78002A32B9 /* RemindMeAtPhone@2x.png */; };
+		93D6765816F86E78002A32B9 /* RemindMeAtSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D6765416F86E78002A32B9 /* RemindMeAtSettings@2x.png */; };
+		93D6765916F86E78002A32B9 /* RemindMeAtSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D6765516F86E78002A32B9 /* RemindMeAtSettings.png */; };
 		93EAC55816F738A3009AF81E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EAC55716F738A3009AF81E /* UIKit.framework */; };
 		93EAC55A16F738A3009AF81E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EAC55916F738A3009AF81E /* Foundation.framework */; };
 		93EAC55C16F738A3009AF81E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EAC55B16F738A3009AF81E /* CoreGraphics.framework */; };
 		93EAC56216F738A3009AF81E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93EAC56016F738A3009AF81E /* InfoPlist.strings */; };
 		93EAC56416F738A3009AF81E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC56316F738A3009AF81E /* main.m */; };
 		93EAC56816F738A3009AF81E /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC56716F738A3009AF81E /* RMAppDelegate.m */; };
-		93EAC56A16F738A3009AF81E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 93EAC56916F738A3009AF81E /* Default.png */; };
-		93EAC56C16F738A3009AF81E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93EAC56B16F738A3009AF81E /* Default@2x.png */; };
-		93EAC56E16F738A3009AF81E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93EAC56D16F738A3009AF81E /* Default-568h@2x.png */; };
 		93EAC57116F738A3009AF81E /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93EAC56F16F738A3009AF81E /* MainStoryboard.storyboard */; };
 		93EAC57B16F738BD009AF81E /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EAC57A16F738BD009AF81E /* EventKit.framework */; };
 		93EAC57D16F738C4009AF81E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EAC57C16F738C4009AF81E /* MapKit.framework */; };
 		93EAC57F16F738CA009AF81E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93EAC57E16F738CA009AF81E /* CoreLocation.framework */; };
 		93EAC58216F743EB009AF81E /* RMMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC58116F743EB009AF81E /* RMMapViewController.m */; };
 		93EAC58516F74408009AF81E /* RMAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC58416F74408009AF81E /* RMAddReminderViewController.m */; };
-		93EAC58816F74429009AF81E /* RMReminderListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93EAC58716F74429009AF81E /* RMReminderListsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9359680A16F888A400FDD8AA /* RMShowReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMShowReminderViewController.h; sourceTree = "<group>"; };
+		9359680B16F888A400FDD8AA /* RMShowReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMShowReminderViewController.m; sourceTree = "<group>"; };
+		939803BB16F8793500EEE5E5 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		939803BD16F8793B00EEE5E5 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		939803BF16F8793F00EEE5E5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		939975AD16F843E200E09AF3 /* RMGeofencedReminderAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMGeofencedReminderAnnotation.h; sourceTree = "<group>"; };
+		939975AE16F843E200E09AF3 /* RMGeofencedReminderAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMGeofencedReminderAnnotation.m; sourceTree = "<group>"; };
+		939975B016F84BFE00E09AF3 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		939975B216F85D3900E09AF3 /* RMReminderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMReminderManager.h; sourceTree = "<group>"; };
+		939975B316F85D3900E09AF3 /* RMReminderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMReminderManager.m; sourceTree = "<group>"; };
+		939975B516F863D200E09AF3 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		93D6765216F86E78002A32B9 /* RemindMeAtPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RemindMeAtPhone.png; sourceTree = "<group>"; };
+		93D6765316F86E78002A32B9 /* RemindMeAtPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RemindMeAtPhone@2x.png"; sourceTree = "<group>"; };
+		93D6765416F86E78002A32B9 /* RemindMeAtSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RemindMeAtSettings@2x.png"; sourceTree = "<group>"; };
+		93D6765516F86E78002A32B9 /* RemindMeAtSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RemindMeAtSettings.png; sourceTree = "<group>"; };
 		93EAC55416F738A3009AF81E /* Remind Me At.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remind Me At.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93EAC55716F738A3009AF81E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		93EAC55916F738A3009AF81E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -36,9 +59,6 @@
 		93EAC56516F738A3009AF81E /* Remind Me At-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Remind Me At-Prefix.pch"; sourceTree = "<group>"; };
 		93EAC56616F738A3009AF81E /* RMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMAppDelegate.h; sourceTree = "<group>"; };
 		93EAC56716F738A3009AF81E /* RMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMAppDelegate.m; sourceTree = "<group>"; };
-		93EAC56916F738A3009AF81E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		93EAC56B16F738A3009AF81E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		93EAC56D16F738A3009AF81E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		93EAC57016F738A3009AF81E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		93EAC57A16F738BD009AF81E /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		93EAC57C16F738C4009AF81E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -47,8 +67,6 @@
 		93EAC58116F743EB009AF81E /* RMMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMMapViewController.m; sourceTree = "<group>"; };
 		93EAC58316F74408009AF81E /* RMAddReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAddReminderViewController.h; sourceTree = "<group>"; };
 		93EAC58416F74408009AF81E /* RMAddReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMAddReminderViewController.m; sourceTree = "<group>"; };
-		93EAC58616F74429009AF81E /* RMReminderListsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMReminderListsViewController.h; sourceTree = "<group>"; };
-		93EAC58716F74429009AF81E /* RMReminderListsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMReminderListsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				939975B616F863D200E09AF3 /* EventKitUI.framework in Frameworks */,
+				939975B116F84BFE00E09AF3 /* AddressBookUI.framework in Frameworks */,
 				93EAC57F16F738CA009AF81E /* CoreLocation.framework in Frameworks */,
 				93EAC57D16F738C4009AF81E /* MapKit.framework in Frameworks */,
 				93EAC57B16F738BD009AF81E /* EventKit.framework in Frameworks */,
@@ -88,6 +108,8 @@
 		93EAC55616F738A3009AF81E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				939975B516F863D200E09AF3 /* EventKitUI.framework */,
+				939975B016F84BFE00E09AF3 /* AddressBookUI.framework */,
 				93EAC57E16F738CA009AF81E /* CoreLocation.framework */,
 				93EAC57C16F738C4009AF81E /* MapKit.framework */,
 				93EAC57A16F738BD009AF81E /* EventKit.framework */,
@@ -104,13 +126,17 @@
 				93EAC56616F738A3009AF81E /* RMAppDelegate.h */,
 				93EAC56716F738A3009AF81E /* RMAppDelegate.m */,
 				93EAC56F16F738A3009AF81E /* MainStoryboard.storyboard */,
-				93EAC55E16F738A3009AF81E /* Supporting Files */,
+				939975B216F85D3900E09AF3 /* RMReminderManager.h */,
+				939975B316F85D3900E09AF3 /* RMReminderManager.m */,
 				93EAC58016F743EB009AF81E /* RMMapViewController.h */,
 				93EAC58116F743EB009AF81E /* RMMapViewController.m */,
 				93EAC58316F74408009AF81E /* RMAddReminderViewController.h */,
 				93EAC58416F74408009AF81E /* RMAddReminderViewController.m */,
-				93EAC58616F74429009AF81E /* RMReminderListsViewController.h */,
-				93EAC58716F74429009AF81E /* RMReminderListsViewController.m */,
+				9359680A16F888A400FDD8AA /* RMShowReminderViewController.h */,
+				9359680B16F888A400FDD8AA /* RMShowReminderViewController.m */,
+				939975AD16F843E200E09AF3 /* RMGeofencedReminderAnnotation.h */,
+				939975AE16F843E200E09AF3 /* RMGeofencedReminderAnnotation.m */,
+				93EAC55E16F738A3009AF81E /* Supporting Files */,
 			);
 			path = "Remind Me At";
 			sourceTree = "<group>";
@@ -118,13 +144,17 @@
 		93EAC55E16F738A3009AF81E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				939803BF16F8793F00EEE5E5 /* Default-568h@2x.png */,
+				939803BD16F8793B00EEE5E5 /* Default@2x.png */,
+				939803BB16F8793500EEE5E5 /* Default.png */,
+				93D6765216F86E78002A32B9 /* RemindMeAtPhone.png */,
+				93D6765316F86E78002A32B9 /* RemindMeAtPhone@2x.png */,
+				93D6765416F86E78002A32B9 /* RemindMeAtSettings@2x.png */,
+				93D6765516F86E78002A32B9 /* RemindMeAtSettings.png */,
 				93EAC55F16F738A3009AF81E /* Remind Me At-Info.plist */,
 				93EAC56016F738A3009AF81E /* InfoPlist.strings */,
 				93EAC56316F738A3009AF81E /* main.m */,
 				93EAC56516F738A3009AF81E /* Remind Me At-Prefix.pch */,
-				93EAC56916F738A3009AF81E /* Default.png */,
-				93EAC56B16F738A3009AF81E /* Default@2x.png */,
-				93EAC56D16F738A3009AF81E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,10 +212,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				93EAC56216F738A3009AF81E /* InfoPlist.strings in Resources */,
-				93EAC56A16F738A3009AF81E /* Default.png in Resources */,
-				93EAC56C16F738A3009AF81E /* Default@2x.png in Resources */,
-				93EAC56E16F738A3009AF81E /* Default-568h@2x.png in Resources */,
 				93EAC57116F738A3009AF81E /* MainStoryboard.storyboard in Resources */,
+				93D6765616F86E78002A32B9 /* RemindMeAtPhone.png in Resources */,
+				93D6765716F86E78002A32B9 /* RemindMeAtPhone@2x.png in Resources */,
+				93D6765816F86E78002A32B9 /* RemindMeAtSettings@2x.png in Resources */,
+				93D6765916F86E78002A32B9 /* RemindMeAtSettings.png in Resources */,
+				939803BC16F8793500EEE5E5 /* Default.png in Resources */,
+				939803BE16F8793B00EEE5E5 /* Default@2x.png in Resources */,
+				939803C016F8793F00EEE5E5 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +234,9 @@
 				93EAC56816F738A3009AF81E /* RMAppDelegate.m in Sources */,
 				93EAC58216F743EB009AF81E /* RMMapViewController.m in Sources */,
 				93EAC58516F74408009AF81E /* RMAddReminderViewController.m in Sources */,
-				93EAC58816F74429009AF81E /* RMReminderListsViewController.m in Sources */,
+				939975AF16F843E200E09AF3 /* RMGeofencedReminderAnnotation.m in Sources */,
+				939975B416F85D3900E09AF3 /* RMReminderManager.m in Sources */,
+				9359680C16F888A400FDD8AA /* RMShowReminderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +359,7 @@
 				93EAC57916F738A3009AF81E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

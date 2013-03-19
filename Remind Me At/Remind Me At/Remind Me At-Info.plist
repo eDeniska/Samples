@@ -20,6 +20,25 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Using location services to set geofenced reminders</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Using reminders to set geofenced reminders</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Using contacts to properly format address</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>RemindMeAtPhone.png</string>
+				<string>RemindMeAtPhone@2x.png</string>
+				<string>RemindMeAtSettings@2x.png</string>
+				<string>RemindMeAtSettings.png</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>

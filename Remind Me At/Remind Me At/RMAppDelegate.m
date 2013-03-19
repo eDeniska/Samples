@@ -7,11 +7,13 @@
 //
 
 #import "RMAppDelegate.h"
+#import "RMReminderManager.h"
 
 @implementation RMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[RMReminderManager defaultManager] requestAccess];
     // Override point for customization after application launch.
     return YES;
 }
