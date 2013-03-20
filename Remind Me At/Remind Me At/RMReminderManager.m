@@ -196,6 +196,7 @@ NSString * const RMReminderManagerReminderUpdatedNotification = @"RMReminderMana
             alarm.structuredLocation = [EKStructuredLocation locationWithTitle:annotation.subtitle];
             alarm.structuredLocation.geoLocation = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude
                                                                               longitude:annotation.coordinate.longitude];
+            alarm.structuredLocation.radius = 0.0f;
             
             reminder.alarms = @[ alarm ];
             

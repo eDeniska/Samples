@@ -186,7 +186,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iST-7k-HnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Azt-c2-q40" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="834" y="50"/>
+            <point key="canvasLocation" x="834" y="-308"/>
         </scene>
         <!--Show Reminder View Controller - Reminder-->
         <scene sceneID="1WK-5M-PGT">
@@ -241,7 +241,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vwf-OR-oEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="834" y="740"/>
+            <point key="canvasLocation" x="834" y="382"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

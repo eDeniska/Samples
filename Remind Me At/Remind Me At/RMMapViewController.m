@@ -24,10 +24,10 @@
 -(void)remindersUpdated:(NSNotification*)notification;
 -(void)becomeActive:(NSNotification*)notification;
 
-@property (strong, nonatomic) RMGeofencedReminderAnnotation *addedReminder;
+@property (strong, nonatomic) RMGeofencedReminderAnnotation *addedReminderAnnotation;
 @property (strong, nonatomic) CLGeocoder *geocoger;
 
-@property (strong, nonatomic) NSArray *reminders;
+@property (strong, nonatomic) NSArray *reminderAnnotations;
 
 @end
 
@@ -69,8 +69,8 @@
 {
     // controller is dismissed automatically
     
-    [self.mapView removeAnnotation:self.addedReminder];
-    self.addedReminder = nil;
+    [self.mapView removeAnnotation:self.addedReminderAnnotation];
+    self.addedReminderAnnotation = nil;
 }
 
 
@@ -79,20 +79,20 @@
     if (recognizer.state == UIGestureRecognizerStateBegan)
     {
         CLLocationCoordinate2D coordinate = [self.mapView convertPoint:[recognizer locationInView:self.mapView] toCoordinateFromView:self.mapView];
-        if (self.addedReminder)
+        if (self.addedReminderAnnotation)
         {
-            [self.mapView removeAnnotation:self.addedReminder];
+            [self.mapView removeAnnotation:self.addedReminderAnnotation];
         }
-        self.addedReminder = [[RMGeofencedReminderAnnotation alloc] initWithCoordiate:coordinate
-                                                                                title:NSLocalizedString(@"New reminder here", @"New reminder placeholder")
-                                                                             subtitle:nil];
-        [self.mapView addAnnotation:self.addedReminder];
+        self.addedReminderAnnotation = [[RMGeofencedReminderAnnotation alloc] initWithCoordiate:coordinate
+                                                                                          title:NSLocalizedString(@"New reminder here", @"New reminder placeholder")
+                                                                                       subtitle:nil];
+        [self.mapView addAnnotation:self.addedReminderAnnotation];
         CLLocation *location = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
         [self.geocoger reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             if ((placemarks) && (!error))
             {
                 CLPlacemark *placemark = [placemarks lastObject];
-                self.addedReminder.subtitle = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+                self.addedReminderAnnotation.subtitle = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             }
         }];
     }
@@ -104,9 +104,9 @@
 {
     [[RMReminderManager defaultManager] fetchGeofencedRemindersWithCompletion:^(NSArray *reminders) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.reminders)
+            if (self.reminderAnnotations)
             {
-                [self.mapView removeAnnotations:self.reminders];
+                [self.mapView removeAnnotations:self.reminderAnnotations];
             }
             
             NSMutableArray *annotations = [NSMutableArray array];
@@ -126,8 +126,8 @@
                     }
                 }
             }
-            self.reminders = annotations;
-            [self.mapView addAnnotations:self.reminders];
+            self.reminderAnnotations = annotations;
+            [self.mapView addAnnotations:self.reminderAnnotations];
         });
     }];
 }
