@@ -10,3 +10,5 @@ SecureData - sample project working with keychain. Some parts of code could be r
 YATorch - yet another torch. Sample on AVFoundation framework - manipulating torch.
 
 iRemember - sample project demonstrating reminders usage (EventKit framework).
+
+Remind Me At - app that allows to create geofenced reminders by tapping anywhere on the map.
