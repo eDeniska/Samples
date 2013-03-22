@@ -67,7 +67,11 @@
 
 -(IBAction)saveReminder:(UIStoryboardSegue*)segue
 {
-    // controller is dismissed automatically
+    // controller will be dismissed automatically
+    RMAddReminderViewController *vc = segue.sourceViewController;
+    [[RMReminderManager defaultManager] addReminderWithAnnotation:vc.reminderAnnotation
+                                         inCalendarWithIdentifier:vc.calendar.calendarIdentifier
+                                                       completion:NULL];
     
     [self.mapView removeAnnotation:self.addedReminderAnnotation];
     self.addedReminderAnnotation = nil;
@@ -198,9 +202,8 @@
         vc.reminder = annotation.reminder;
         
         vc.deleteReminderCompletion = ^{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
-            });
+            [[RMReminderManager defaultManager] removeReminder:annotation.reminder withCompletion:NULL];
+            [self.navigationController popViewControllerAnimated:YES];
         };
     }
 }

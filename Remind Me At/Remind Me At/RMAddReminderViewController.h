@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) RMGeofencedReminderAnnotation *reminderAnnotation;
 
+@property (strong, nonatomic, readonly) EKCalendar *calendar;
+
 @end

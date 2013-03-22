@@ -127,9 +127,6 @@
     {
         self.reminderAnnotation.title = self.reminderTitleField.text.length ? self.reminderTitleField.text :
                                                                               NSLocalizedString(@"Reminder", @"New reminder default title");
-        [[RMReminderManager defaultManager] addReminderWithAnnotation:self.reminderAnnotation
-                                             inCalendarWithIdentifier:self.calendar.calendarIdentifier
-                                                           completion:NULL];
     }
 }
 

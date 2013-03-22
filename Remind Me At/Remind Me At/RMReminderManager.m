@@ -140,13 +140,13 @@ NSString * const RMReminderManagerReminderUpdatedNotification = @"RMReminderMana
 {
     if (self.accessGranted)
     {
-        NSPredicate *predicate = [self.store predicateForIncompleteRemindersWithDueDateStarting:nil
-                                                                                         ending:nil
-                                                                                      calendars:nil];
-        
         if (completionBlock)
         {
             RMReminderFetchCompletionBlock completion = [completionBlock copy];
+            
+            NSPredicate *predicate = [self.store predicateForIncompleteRemindersWithDueDateStarting:nil
+                                                                                             ending:nil
+                                                                                          calendars:nil];
             
             [self.store fetchRemindersMatchingPredicate:predicate completion:^(NSArray * reminders) {
                 // now looking for

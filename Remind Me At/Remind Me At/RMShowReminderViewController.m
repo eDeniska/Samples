@@ -81,12 +81,10 @@
     if (buttonIndex == actionSheet.destructiveButtonIndex)
     {
         // delete reminder
-        [[RMReminderManager defaultManager] removeReminder:self.reminder withCompletion:^(BOOL result) {
-            if (self.deleteReminderCompletion)
-            {
-                self.deleteReminderCompletion();
-            }
-        }];
+        if (self.deleteReminderCompletion)
+        {
+            self.deleteReminderCompletion();
+        }
     }
 }
 
