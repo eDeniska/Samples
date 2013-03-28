@@ -23,6 +23,12 @@ Remind Me At
 ------------
 App that allows to create geofenced reminders by tapping anywhere on the map.
 
+
+Keyboard Keys
+-------------
+Demo project that shows how to easily attach more keys to standard iOS keyboard.
+
+
 License
 =======
 MIT License
