@@ -88,10 +88,10 @@
 				931AD4521704786E00F6F368 /* KKAppDelegate.h */,
 				931AD4531704786E00F6F368 /* KKAppDelegate.m */,
 				931AD45B1704786F00F6F368 /* MainStoryboard.storyboard */,
+				9319A90C1704896B00ADC1C7 /* MainStoryboardPad.storyboard */,
 				931AD45E1704786F00F6F368 /* KKViewController.h */,
 				931AD45F1704786F00F6F368 /* KKViewController.m */,
 				931AD44A1704786E00F6F368 /* Supporting Files */,
-				9319A90C1704896B00ADC1C7 /* MainStoryboardPad.storyboard */,
 			);
 			path = KeyboardKeys;
 			sourceTree = "<group>";

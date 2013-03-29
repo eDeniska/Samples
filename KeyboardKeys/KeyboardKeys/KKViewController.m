@@ -11,6 +11,7 @@
 @interface KKViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UITextField *alertTextField;
 
 @end
 
@@ -19,12 +20,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.view.window.frame.size.width, 44.0f)];
     
-    // for UIKeyboardAppearanceAlert - this should be set
-    //toolBar.tintColor = [UIColor colorWithRed:0.15f green:0.15f blue:0.15f alpha:1.0f];
-    //toolBar.translucent = YES;
-    
+    // toolbar for default keyboard appearance
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
+                                                                     self.view.window.frame.size.width, 44.0f)];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         toolBar.tintColor = [UIColor colorWithRed:0.6f green:0.6f blue:0.64f alpha:1.0f];
@@ -34,40 +33,97 @@
         toolBar.tintColor = [UIColor colorWithRed:0.56f green:0.59f blue:0.63f alpha:1.0f];
     }
     toolBar.translucent = NO;
-
-    
-    
-    toolBar.items = @[ [[UIBarButtonItem alloc] initWithTitle:@"Add"
-                                                        style:UIBarButtonItemStyleBordered
-                                                       target:self
-                                                       action:@selector(barButtonAdd:)],
-                       [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                     target:nil
-                                                                     action:nil],
-                       [[UIBarButtonItem alloc] initWithTitle:@"Action"
-                                                        style:UIBarButtonItemStyleBordered
-                                                       target:self
-                                                       action:@selector(barButtonAction:)],
-                       ];
+    toolBar.items =   @[ [[UIBarButtonItem alloc] initWithTitle:@"one"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"two"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"three"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"four"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"five"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         ];
+;
     
     self.textField.inputAccessoryView = toolBar;
-	// Do any additional setup after loading the view, typically from a nib.
+
+    // toolbar for alert keyboard appearance, not so nice though
+    UIToolbar *alertToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
+                                                                          self.view.window.frame.size.width, 44.0f)];
+    
+    alertToolBar.tintColor = [UIColor colorWithRed:0.15f green:0.15f blue:0.15f alpha:1.0f];
+    alertToolBar.translucent = YES;
+    alertToolBar.items =  @[ [[UIBarButtonItem alloc] initWithTitle:@"1"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"2"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"3"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"4"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"5"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             ];
+;
+    
+    self.alertTextField.inputAccessoryView = alertToolBar;
 }
 
--(IBAction)barButtonAdd:(id)sender
+-(IBAction)barButtonAddText:(UIBarButtonItem*)sender
 {
-    self.textField.text = [self.textField.text stringByAppendingString:@" add"];
-}
-
--(IBAction)barButtonAction:(id)sender
-{
-    self.textField.text = [self.textField.text stringByAppendingString:@" action"];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (self.textField.isFirstResponder)
+    {
+        self.textField.text = [self.textField.text stringByAppendingString:sender.title];
+    }
+    else if (self.alertTextField.isFirstResponder)
+    {
+        self.alertTextField.text = [self.alertTextField.text stringByAppendingString:sender.title];
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
