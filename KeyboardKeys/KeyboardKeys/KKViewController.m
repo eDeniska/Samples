@@ -33,35 +33,70 @@
         toolBar.tintColor = [UIColor colorWithRed:0.56f green:0.59f blue:0.63f alpha:1.0f];
     }
     toolBar.translucent = NO;
-    toolBar.items =   @[ [[UIBarButtonItem alloc] initWithTitle:@"one"
+    toolBar.items =   @[ [[UIBarButtonItem alloc] initWithTitle:@"!"
                                                           style:UIBarButtonItemStyleBordered
                                                          target:self
                                                          action:@selector(barButtonAddText:)],
                          [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                        target:nil
                                                                        action:nil],
-                         [[UIBarButtonItem alloc] initWithTitle:@"two"
+                         [[UIBarButtonItem alloc] initWithTitle:@"@"
                                                           style:UIBarButtonItemStyleBordered
                                                          target:self
                                                          action:@selector(barButtonAddText:)],
                          [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                        target:nil
                                                                        action:nil],
-                         [[UIBarButtonItem alloc] initWithTitle:@"three"
+                         [[UIBarButtonItem alloc] initWithTitle:@"#"
                                                           style:UIBarButtonItemStyleBordered
                                                          target:self
                                                          action:@selector(barButtonAddText:)],
                          [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                        target:nil
                                                                        action:nil],
-                         [[UIBarButtonItem alloc] initWithTitle:@"four"
+                         [[UIBarButtonItem alloc] initWithTitle:@"$"
                                                           style:UIBarButtonItemStyleBordered
                                                          target:self
                                                          action:@selector(barButtonAddText:)],
                          [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                        target:nil
                                                                        action:nil],
-                         [[UIBarButtonItem alloc] initWithTitle:@"five"
+                         [[UIBarButtonItem alloc] initWithTitle:@"%"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"^"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"&"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"*"
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@"("
+                                                          style:UIBarButtonItemStyleBordered
+                                                         target:self
+                                                         action:@selector(barButtonAddText:)],
+                         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                       target:nil
+                                                                       action:nil],
+                         [[UIBarButtonItem alloc] initWithTitle:@")"
                                                           style:UIBarButtonItemStyleBordered
                                                          target:self
                                                          action:@selector(barButtonAddText:)],
@@ -108,6 +143,41 @@
                                                               style:UIBarButtonItemStyleBordered
                                                              target:self
                                                              action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"6"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"7"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"8"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"9"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
+                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                           target:nil
+                                                                           action:nil],
+                             [[UIBarButtonItem alloc] initWithTitle:@"0"
+                                                              style:UIBarButtonItemStyleBordered
+                                                             target:self
+                                                             action:@selector(barButtonAddText:)],
                              ];
 ;
     
@@ -118,11 +188,11 @@
 {
     if (self.textField.isFirstResponder)
     {
-        self.textField.text = [self.textField.text stringByAppendingString:sender.title];
+        [self.textField insertText:sender.title];
     }
     else if (self.alertTextField.isFirstResponder)
     {
-        self.alertTextField.text = [self.alertTextField.text stringByAppendingString:sender.title];
+        [self.alertTextField insertText:sender.title];
     }
 }
 
