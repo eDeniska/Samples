@@ -101,10 +101,9 @@
                                                          target:self
                                                          action:@selector(barButtonAddText:)],
                          ];
-;
     
     self.textField.inputAccessoryView = toolBar;
-
+    
     // toolbar for alert keyboard appearance, not so nice though
     UIToolbar *alertToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
                                                                           self.view.window.frame.size.width, 44.0f)];
