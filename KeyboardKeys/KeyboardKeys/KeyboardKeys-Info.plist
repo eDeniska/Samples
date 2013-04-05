@@ -16,6 +16,25 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>KeyboardKeysSpotlight@2x.png</string>
+				<string>KeyboardKeysSpotlight.png</string>
+				<string>KeyboardKeysSettings@2x.png</string>
+				<string>KeyboardKeysSettings.png</string>
+				<string>KeyboardKeysPhone@2x.png</string>
+				<string>KeyboardKeysPhone.png</string>
+				<string>KeyboardKeysPad@2x.png</string>
+				<string>KeyboardKeysPad.png</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleSignature</key>

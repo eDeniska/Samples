@@ -7,21 +7,22 @@
 //
 
 #import "KKViewController.h"
+#import "KKNotificationActivity.h"
 
-@interface KKViewController () <UITextFieldDelegate>
+@interface KKViewController () <UITextFieldDelegate, UIPopoverControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITextField *alertTextField;
+@property (strong, nonatomic) UIPopoverController *popover;
+
+-(IBAction)share:(UIBarButtonItem*)sender;
 
 @end
 
 @implementation KKViewController
 
-- (void)viewDidLoad
+-(void)configureKeyboardToolbars
 {
-    [super viewDidLoad];
-    
-    // toolbar for default keyboard appearance
     UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 0.0f,
                                                                      self.view.window.frame.size.width, 44.0f)];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -178,9 +179,16 @@
                                                              target:self
                                                              action:@selector(barButtonAddText:)],
                              ];
-;
     
     self.alertTextField.inputAccessoryView = alertToolBar;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // toolbar for default keyboard appearance
+    [self configureKeyboardToolbars];
 }
 
 -(IBAction)barButtonAddText:(UIBarButtonItem*)sender
@@ -199,6 +207,59 @@
 {
     [textField resignFirstResponder];
     return NO;
+}
+
+-(IBAction)share:(UIBarButtonItem*)sender
+{
+    // workaround for UIActivityViewController vs keyboard bugs
+    [self.textField resignFirstResponder];
+    [self.alertTextField resignFirstResponder];
+
+    // prepeare item for sharing
+    NSArray *items = @[ self.textField.text,
+                        [NSURL URLWithString:@"http://easyplace.wordress.com"],
+                        [UIImage imageNamed:@"KeyboardKeysPad@2x.png"] ];
+    
+    KKNotificationActivity *notificationActivity = [[KKNotificationActivity alloc] init];
+    
+    // prepare sharing controller
+    UIActivityViewController *avc = [[UIActivityViewController alloc] initWithActivityItems:items
+                                                                      applicationActivities:@[ notificationActivity ]];
+    avc.excludedActivityTypes = @[ UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll ];
+    avc.completionHandler = ^(NSString *activityType, BOOL completed) {
+        if (completed)
+        {
+            NSLog(@"shared to %@", activityType);
+        }
+        else
+        {
+            NSLog(@"not shared");
+        }
+        
+        // workaround for UIActivityViewController vs keyboard bugs
+        [self configureKeyboardToolbars];
+    };
+
+    // present sharing options to user
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [self.popover dismissPopoverAnimated:YES];
+        self.popover = [[UIPopoverController alloc] initWithContentViewController:avc];
+        [self.popover presentPopoverFromBarButtonItem:sender
+                             permittedArrowDirections:UIPopoverArrowDirectionAny
+                                             animated:YES];
+        self.popover.passthroughViews = nil;
+        self.popover.delegate = self;
+    }
+    else
+    {
+        [self presentViewController:avc animated:YES completion:NULL];
+    }
+}
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    self.popover = nil;
 }
 
 @end

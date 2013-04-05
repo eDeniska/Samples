@@ -15,6 +15,16 @@
     // Override point for customization after application launch.
     return YES;
 }
+
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    // actually, here we should transfer user to approriate place of application
+    [[[UIAlertView alloc] initWithTitle:@"Notification"
+                                message:notification.alertBody
+                               delegate:nil
+                      cancelButtonTitle:@"Ok"
+                      otherButtonTitles:nil] show];
+}
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -36,6 +46,8 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    NSArray *notifications = [NSArray arrayWithArray:[UIApplication sharedApplication].scheduledLocalNotifications];
+    [UIApplication sharedApplication].scheduledLocalNotifications = notifications;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

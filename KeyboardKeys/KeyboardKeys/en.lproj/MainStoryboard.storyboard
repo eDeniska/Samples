@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="AbD-4X-UX2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Keys-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="KKViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start typing here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LU6-zI-HXs">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="dHV-Rd-H61"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="or here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B60-jl-idQ">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="yes" keyboardAppearance="alert"/>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="pXO-0A-BtY"/>
                                 </connections>
@@ -37,6 +37,13 @@
                             <constraint firstItem="LU6-zI-HXs" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="YR1-Sg-A72"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Keys" id="rrR-P4-ME5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="qSv-Kb-kBc">
+                            <connections>
+                                <action selector="share:" destination="2" id="2hO-fK-DS6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="alertTextField" destination="B60-jl-idQ" id="dO6-lc-iED"/>
                         <outlet property="textField" destination="LU6-zI-HXs" id="RST-yY-QjT"/>
@@ -44,6 +51,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="510" y="48"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="nmI-mk-t6t">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="AbD-4X-UX2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sjI-M1-Cpj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2" kind="relationship" relationship="rootViewController" id="L6d-di-TwL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YCU-KL-ltF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77" y="48"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -19,6 +19,19 @@
 		931AD45A1704786F00F6F368 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 931AD4591704786F00F6F368 /* Default-568h@2x.png */; };
 		931AD45D1704786F00F6F368 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 931AD45B1704786F00F6F368 /* MainStoryboard.storyboard */; };
 		931AD4601704786F00F6F368 /* KKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 931AD45F1704786F00F6F368 /* KKViewController.m */; };
+		938D3FD9170ED5C700E53C9B /* KKNotificationActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 938D3FD8170ED5C700E53C9B /* KKNotificationActivity.m */; };
+		938D3FE9170EFA4100E53C9B /* KeyboardKeysPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FDC170EFA4100E53C9B /* KeyboardKeysPad@2x.png */; };
+		938D3FEC170EFA4100E53C9B /* KeyboardKeysSpotlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FDF170EFA4100E53C9B /* KeyboardKeysSpotlight@2x.png */; };
+		938D3FED170EFA4100E53C9B /* KeyboardKeysSpotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FE0170EFA4100E53C9B /* KeyboardKeysSpotlight.png */; };
+		938D3FEF170EFA4100E53C9B /* KeyboardKeysSettings.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FE2170EFA4100E53C9B /* KeyboardKeysSettings.png */; };
+		938D3FF0170EFA4100E53C9B /* KeyboardKeysSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FE3170EFA4100E53C9B /* KeyboardKeysSettings@2x.png */; };
+		938D3FF1170EFA4100E53C9B /* KeyboardKeysPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FE4170EFA4100E53C9B /* KeyboardKeysPhone.png */; };
+		938D3FF2170EFA4100E53C9B /* KeyboardKeysPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FE5170EFA4100E53C9B /* KeyboardKeysPhone@2x.png */; };
+		938D3FF3170EFA4100E53C9B /* KeyboardKeysPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FE6170EFA4100E53C9B /* KeyboardKeysPad.png */; };
+		938D4000170F009A00E53C9B /* NotificationActivityPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FFC170F009A00E53C9B /* NotificationActivityPhone@2x.png */; };
+		938D4001170F009A00E53C9B /* NotificationActivityPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FFD170F009A00E53C9B /* NotificationActivityPad.png */; };
+		938D4002170F009A00E53C9B /* NotificationActivityPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FFE170F009A00E53C9B /* NotificationActivityPad@2x.png */; };
+		938D4003170F009A00E53C9B /* NotificationActivityPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 938D3FFF170F009A00E53C9B /* NotificationActivityPhone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +52,20 @@
 		931AD45C1704786F00F6F368 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		931AD45E1704786F00F6F368 /* KKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KKViewController.h; sourceTree = "<group>"; };
 		931AD45F1704786F00F6F368 /* KKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KKViewController.m; sourceTree = "<group>"; };
+		938D3FD7170ED5C700E53C9B /* KKNotificationActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KKNotificationActivity.h; sourceTree = "<group>"; };
+		938D3FD8170ED5C700E53C9B /* KKNotificationActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KKNotificationActivity.m; sourceTree = "<group>"; };
+		938D3FDC170EFA4100E53C9B /* KeyboardKeysPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardKeysPad@2x.png"; sourceTree = "<group>"; };
+		938D3FDF170EFA4100E53C9B /* KeyboardKeysSpotlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardKeysSpotlight@2x.png"; sourceTree = "<group>"; };
+		938D3FE0170EFA4100E53C9B /* KeyboardKeysSpotlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardKeysSpotlight.png; sourceTree = "<group>"; };
+		938D3FE2170EFA4100E53C9B /* KeyboardKeysSettings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardKeysSettings.png; sourceTree = "<group>"; };
+		938D3FE3170EFA4100E53C9B /* KeyboardKeysSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardKeysSettings@2x.png"; sourceTree = "<group>"; };
+		938D3FE4170EFA4100E53C9B /* KeyboardKeysPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardKeysPhone.png; sourceTree = "<group>"; };
+		938D3FE5170EFA4100E53C9B /* KeyboardKeysPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardKeysPhone@2x.png"; sourceTree = "<group>"; };
+		938D3FE6170EFA4100E53C9B /* KeyboardKeysPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardKeysPad.png; sourceTree = "<group>"; };
+		938D3FFC170F009A00E53C9B /* NotificationActivityPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationActivityPhone@2x.png"; sourceTree = "<group>"; };
+		938D3FFD170F009A00E53C9B /* NotificationActivityPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationActivityPad.png; sourceTree = "<group>"; };
+		938D3FFE170F009A00E53C9B /* NotificationActivityPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotificationActivityPad@2x.png"; sourceTree = "<group>"; };
+		938D3FFF170F009A00E53C9B /* NotificationActivityPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotificationActivityPhone.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +118,8 @@
 				9319A90C1704896B00ADC1C7 /* MainStoryboardPad.storyboard */,
 				931AD45E1704786F00F6F368 /* KKViewController.h */,
 				931AD45F1704786F00F6F368 /* KKViewController.m */,
+				938D3FD7170ED5C700E53C9B /* KKNotificationActivity.h */,
+				938D3FD8170ED5C700E53C9B /* KKNotificationActivity.m */,
 				931AD44A1704786E00F6F368 /* Supporting Files */,
 			);
 			path = KeyboardKeys;
@@ -99,6 +128,18 @@
 		931AD44A1704786E00F6F368 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				938D3FFC170F009A00E53C9B /* NotificationActivityPhone@2x.png */,
+				938D3FFD170F009A00E53C9B /* NotificationActivityPad.png */,
+				938D3FFE170F009A00E53C9B /* NotificationActivityPad@2x.png */,
+				938D3FFF170F009A00E53C9B /* NotificationActivityPhone.png */,
+				938D3FDF170EFA4100E53C9B /* KeyboardKeysSpotlight@2x.png */,
+				938D3FE0170EFA4100E53C9B /* KeyboardKeysSpotlight.png */,
+				938D3FE2170EFA4100E53C9B /* KeyboardKeysSettings.png */,
+				938D3FE3170EFA4100E53C9B /* KeyboardKeysSettings@2x.png */,
+				938D3FE4170EFA4100E53C9B /* KeyboardKeysPhone.png */,
+				938D3FE5170EFA4100E53C9B /* KeyboardKeysPhone@2x.png */,
+				938D3FE6170EFA4100E53C9B /* KeyboardKeysPad.png */,
+				938D3FDC170EFA4100E53C9B /* KeyboardKeysPad@2x.png */,
 				931AD44B1704786E00F6F368 /* KeyboardKeys-Info.plist */,
 				931AD44C1704786E00F6F368 /* InfoPlist.strings */,
 				931AD44F1704786E00F6F368 /* main.m */,
@@ -168,6 +209,18 @@
 				931AD45A1704786F00F6F368 /* Default-568h@2x.png in Resources */,
 				931AD45D1704786F00F6F368 /* MainStoryboard.storyboard in Resources */,
 				9319A90D1704896B00ADC1C7 /* MainStoryboardPad.storyboard in Resources */,
+				938D3FE9170EFA4100E53C9B /* KeyboardKeysPad@2x.png in Resources */,
+				938D3FEC170EFA4100E53C9B /* KeyboardKeysSpotlight@2x.png in Resources */,
+				938D3FED170EFA4100E53C9B /* KeyboardKeysSpotlight.png in Resources */,
+				938D3FEF170EFA4100E53C9B /* KeyboardKeysSettings.png in Resources */,
+				938D3FF0170EFA4100E53C9B /* KeyboardKeysSettings@2x.png in Resources */,
+				938D3FF1170EFA4100E53C9B /* KeyboardKeysPhone.png in Resources */,
+				938D3FF2170EFA4100E53C9B /* KeyboardKeysPhone@2x.png in Resources */,
+				938D3FF3170EFA4100E53C9B /* KeyboardKeysPad.png in Resources */,
+				938D4000170F009A00E53C9B /* NotificationActivityPhone@2x.png in Resources */,
+				938D4001170F009A00E53C9B /* NotificationActivityPad.png in Resources */,
+				938D4002170F009A00E53C9B /* NotificationActivityPad@2x.png in Resources */,
+				938D4003170F009A00E53C9B /* NotificationActivityPhone.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +234,7 @@
 				931AD4501704786E00F6F368 /* main.m in Sources */,
 				931AD4541704786E00F6F368 /* KKAppDelegate.m in Sources */,
 				931AD4601704786F00F6F368 /* KKViewController.m in Sources */,
+				938D3FD9170ED5C700E53C9B /* KKNotificationActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
