@@ -13,6 +13,9 @@
 @interface TSTouchView : UIView
 
 @property (weak, nonatomic) id<TSTouchViewDelegate> delegate;
+@property (nonatomic, strong, readonly) UIImage *currentDrawing;
+
+-(void)clearDrawing;
 
 @end
 

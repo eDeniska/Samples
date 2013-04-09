@@ -17,6 +17,7 @@
 @property (assign, nonatomic) float minTouch;
 @property (assign, nonatomic) float maxTouch;
 @property (assign, nonatomic) float currentTouch;
+- (IBAction)clearDrawing;
 
 @end
 
@@ -70,6 +71,11 @@
 -(void)touchViewEndedTouch:(TSTouchView *)sender
 {
     
+}
+
+- (IBAction)clearDrawing
+{
+    [self.touchArea clearDrawing];
 }
 
 @end

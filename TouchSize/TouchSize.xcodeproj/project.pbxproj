@@ -103,9 +103,9 @@
 				938D40281713018300E53C9B /* MainStoryboard.storyboard */,
 				938D402B1713018300E53C9B /* TSViewController.h */,
 				938D402C1713018300E53C9B /* TSViewController.m */,
-				938D40171713018300E53C9B /* Supporting Files */,
 				938D4033171301A900E53C9B /* TSTouchView.h */,
 				938D4034171301A900E53C9B /* TSTouchView.m */,
+				938D40171713018300E53C9B /* Supporting Files */,
 			);
 			path = TouchSize;
 			sourceTree = "<group>";
@@ -325,6 +325,7 @@
 				938D40321713018300E53C9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
