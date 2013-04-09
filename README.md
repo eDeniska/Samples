@@ -26,7 +26,11 @@ App that allows to create geofenced reminders by tapping anywhere on the map.
 
 Keyboard Keys
 -------------
-Demo project that shows how to easily attach more keys to standard iOS keyboard.
+Demo project that shows how to easily attach more keys to standard iOS keyboard. Also it demonstrates how to use UIActivityViewController and local notifications.
+
+TouchSize
+---------
+Sample app that shows how to detect tap size.
 
 
 License
