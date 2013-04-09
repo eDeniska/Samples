@@ -9,7 +9,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TSTouchView.h"
 
-CGFloat const kTSTouchViewMultiplyFactor = 1.5f;
+CGFloat const kTSTouchViewMultiplyFactor = 6.45f;
+// value of 6.45f provides actual size in points
 
 @interface TSTouchView()
 
@@ -50,116 +51,147 @@ CGFloat const kTSTouchViewMultiplyFactor = 1.5f;
                      [UIColor whiteColor], [UIColor blackColor] ];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+#pragma mark - Drawing context preparation
+
+-(CGContextRef)prepareContextWithLineWidth:(CGFloat)width
+{
+    UIGraphicsBeginImageContext(self.bounds.size);
+    [self.currentDrawing drawInRect:self.bounds];
+    CGContextRef c = UIGraphicsGetCurrentContext();
+    
+    CGContextSetLineCap(c, kCGLineCapRound);
+    CGContextSetLineJoin(c, kCGLineJoinRound);
+    CGContextSetLineWidth(c, width);
+    [self.colors[self.currentColor] setStroke];
+
+    return c;
+}
+
+-(void)disposeContext
+{
+    self.currentDrawing = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+}
+
+#pragma mark - Curved line draw code
+
+-(void)putStartPoint:(CGPoint)point withWidth:(CGFloat)width 
 {
     self.currentColor++;
     if (self.currentColor == self.colors.count)
     {
         self.currentColor = 0;
     }
-    
-    UIGraphicsBeginImageContext(self.bounds.size);
-    CGContextRef c = UIGraphicsGetCurrentContext();
-    [self.currentDrawing drawInRect:self.bounds];
 
-    UITouch *touch = [touches anyObject];
-    self.point = [touch locationInView:self];
+    self.point = point;
     self.middleSet = NO;
 
-    CGContextSetLineCap(c, kCGLineCapRound);
-    CGContextSetLineJoin(c, kCGLineJoinRound);
+    CGContextRef c = [self prepareContextWithLineWidth:width];
 
-    CGContextSetLineWidth(c, [[touch valueForKey:@"pathMajorRadius"] floatValue] * kTSTouchViewMultiplyFactor);
-    
     CGContextMoveToPoint(c, self.point.x, self.point.y);
     CGContextAddLineToPoint(c, self.point.x, self.point.y);
-    [self.colors[self.currentColor] setStroke];
     CGContextStrokePath(c);
-    self.currentDrawing = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+
+    [self disposeContext];
+}
+
+-(void)moveToPoint:(CGPoint)point withWidth:(CGFloat)width
+{
+    CGContextRef c = [self prepareContextWithLineWidth:width];
+
+    if (self.middleSet)
+    {
+        CGContextMoveToPoint(c, self.middle.x, self.middle.y);
+        self.middle = CGPointMake((self.point.x + point.x) / 2,
+                                  (self.point.y + point.y) / 2);
+        CGContextAddQuadCurveToPoint(c, self.point.x, self.point.y, self.middle.x, self.middle.y);
+        self.point = point;
+    }
+    else
+    {
+        CGContextMoveToPoint(c, self.point.x, self.point.y);
+        self.middle = CGPointMake((self.point.x + point.x) / 2,
+                                  (self.point.y + point.y) / 2);
+        self.point = point;
+        CGContextAddLineToPoint(c, self.point.x, self.point.y);
+        self.middleSet = YES;
+    }
+    CGContextStrokePath(c);
+    
+    [self disposeContext];
+}
+
+-(void)finishAtPoint:(CGPoint)point withWidth:(CGFloat)width
+{
+    CGContextRef c = [self prepareContextWithLineWidth:width];
+    
+    if (self.middleSet)
+    {
+        CGContextMoveToPoint(c, self.middle.x, self.middle.y);
+    }
+    else
+    {
+        CGContextMoveToPoint(c, self.point.x, self.point.y);
+    }
+    self.point = point;
+    CGContextAddLineToPoint(c, self.point.x, self.point.y);
+    CGContextStrokePath(c);
+    
+    [self disposeContext];
+}
+
+#pragma mark - Touch events handling
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    
+    [self putStartPoint:[touch locationInView:self]
+              withWidth:[[touch valueForKey:@"pathMajorRadius"] floatValue] * kTSTouchViewMultiplyFactor];
+    
+    [self.delegate touchView:self startedTouchWithSize:[[touch valueForKey:@"pathMajorRadius"] floatValue]];
     
     [self setNeedsDisplay];
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UIGraphicsBeginImageContext(self.bounds.size);
-    CGContextRef c = UIGraphicsGetCurrentContext();
-    [self.currentDrawing drawInRect:self.bounds];
-    [self.colors[self.currentColor] setStroke];
     UITouch *touch = [touches anyObject];
     
-    CGContextSetLineCap(c, kCGLineCapRound);
-    CGContextSetLineJoin(c, kCGLineJoinRound);
-    CGContextSetLineWidth(c, [[touch valueForKey:@"pathMajorRadius"] floatValue] * kTSTouchViewMultiplyFactor);
-
-    if (self.middleSet)
-    {
-        CGContextMoveToPoint(c, self.middle.x, self.middle.y);
-        CGPoint touchPoint = [touch locationInView:self];
-        self.middle = CGPointMake((self.point.x + touchPoint.x) / 2,
-                                        (self.point.y + touchPoint.y) / 2);
-        CGContextAddQuadCurveToPoint(c, self.point.x, self.point.y, self.middle.x, self.middle.y);
-        self.point = touchPoint;
-    }
-    else
-    {
-        CGContextMoveToPoint(c, self.point.x, self.point.y);
-        CGPoint touchPoint = [touch locationInView:self];
-        self.middle = CGPointMake((self.point.x + touchPoint.x) / 2,
-                                        (self.point.y + touchPoint.y) / 2);
-        self.point = touchPoint;
-        CGContextAddLineToPoint(c, self.point.x, self.point.y);
-        self.middleSet = YES;
-    }
-    CGContextStrokePath(c);
+    [self moveToPoint:[touch locationInView:self]
+            withWidth:[[touch valueForKey:@"pathMajorRadius"] floatValue] * kTSTouchViewMultiplyFactor];
     
-    self.currentDrawing = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    [self.delegate touchView:self movedTouchWithSize:[[touch valueForKey:@"pathMajorRadius"] floatValue]];
     
     [self setNeedsDisplay];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    UIGraphicsBeginImageContext(self.bounds.size);
-    CGContextRef c = UIGraphicsGetCurrentContext();
-    [self.currentDrawing drawInRect:self.bounds];
-    [self.colors[self.currentColor] setStroke];
     UITouch *touch = [touches anyObject];
     
-    CGContextSetLineCap(c, kCGLineCapRound);
-    CGContextSetLineJoin(c, kCGLineJoinRound);
-    CGContextSetLineWidth(c, [[touch valueForKey:@"pathMajorRadius"] floatValue] * kTSTouchViewMultiplyFactor);
-
-    if (self.middleSet)
-    {
-        CGContextMoveToPoint(c, self.middle.x, self.middle.y);
-    }
-    else
-    {
-        CGContextMoveToPoint(c, self.point.x, self.point.y);
-    }
-    self.point = [touch locationInView:self];
-    CGContextAddLineToPoint(c, self.point.x, self.point.y);
-    CGContextStrokePath(c);
+    [self finishAtPoint:[touch locationInView:self]
+              withWidth:[[touch valueForKey:@"pathMajorRadius"] floatValue] * kTSTouchViewMultiplyFactor];
     
-    self.currentDrawing = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+    [self.delegate touchView:self movedTouchWithSize:[[touch valueForKey:@"pathMajorRadius"] floatValue]];
+    [self.delegate touchViewEndedTouch:self];
     
     [self setNeedsDisplay];
-    self.middleSet = NO;
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // do nothing
+    [self.delegate touchViewEndedTouch:self];
 }
+
+#pragma mark - Actual draw code
 
 - (void)drawRect:(CGRect)rect
 {
     [self.currentDrawing drawInRect:self.bounds];
 }
+
+#pragma mark - Clear action
 
 -(void)clearDrawing
 {
