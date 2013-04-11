@@ -32,6 +32,9 @@ TouchSize
 ---------
 Sample app that shows how to detect tap size.
 
+Categories
+----------
+Sample app that shows some features of Objective-C categories.
 
 License
 =======
