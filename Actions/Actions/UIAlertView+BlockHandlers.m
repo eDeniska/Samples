@@ -41,7 +41,10 @@
 {
     self.delegate = self;
     NSInteger index = [self addButtonWithTitle:title];
-    self.handlers[@(index)] = [block copy];
+    if (block)
+    {
+        self.handlers[@(index)] = [block copy];
+    }
     switch (buttonType)
     {
         case ASAlertViewButtonTypeCancel:
