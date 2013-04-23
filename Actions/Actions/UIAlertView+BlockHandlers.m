@@ -49,6 +49,7 @@
     {
         case ASAlertViewButtonTypeCancel:
             self.cancelButtonIndex = index;
+            break;
             
         default:
             break;

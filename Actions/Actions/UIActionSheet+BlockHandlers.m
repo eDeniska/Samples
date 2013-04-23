@@ -53,6 +53,7 @@
             
         case ASActionSheetButtonTypeCancel:
             self.cancelButtonIndex = index;
+            break;
             
         default:
             break;
