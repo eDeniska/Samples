@@ -36,6 +36,10 @@ Categories
 ----------
 Sample app that shows some features of Objective-C categories.
 
+Actions
+-------
+Sample app that demonstrates how categories, associated objects an blocks could make standard iOS action sheets and alert views easier to use.
+
 License
 =======
 MIT License
