@@ -40,6 +40,10 @@ Actions
 -------
 Sample app that demonstrates how categories, associated objects an blocks could make standard iOS action sheets and alert views easier to use.
 
+Initializers
+------------
+Sample app that demonstrates class loading, initialization and method swizzling techniques.
+
 License
 =======
 MIT License
