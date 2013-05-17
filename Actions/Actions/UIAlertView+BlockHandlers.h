@@ -10,18 +10,14 @@
 
 typedef void (^ASAlertViewButtonHandler)();
 
-typedef NS_ENUM(NSUInteger, ASAlertViewButtonType)
-{
-    ASAlertViewButtonTypeDefault = 0,
-    ASAlertViewButtonTypeCancel  = 1
-};
-
 @interface UIAlertView (BlockHandlers) <UIAlertViewDelegate>
 
 -(id)initWithTitle:(NSString *)title message:(NSString*)message;
 
 -(void)addButtonWithTitle:(NSString*)title
-               buttonType:(ASAlertViewButtonType)buttonType
                   handler:(ASAlertViewButtonHandler)block;
+
+-(void)addCancelButtonWithTitle:(NSString*)title
+                        handler:(ASAlertViewButtonHandler)block;
 
 @end

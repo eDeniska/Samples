@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93639D511744E6B50011166C /* NSMutableString+Transform.m in Sources */ = {isa = PBXBuildFile; fileRef = 93639D501744E6B50011166C /* NSMutableString+Transform.m */; };
 		93FC15EE17266C6500C35160 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FC15ED17266C6500C35160 /* UIKit.framework */; };
 		93FC15F017266C6500C35160 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FC15EF17266C6500C35160 /* Foundation.framework */; };
 		93FC15F217266C6500C35160 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93FC15F117266C6500C35160 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93639D4F1744E6B50011166C /* NSMutableString+Transform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Transform.h"; sourceTree = "<group>"; };
+		93639D501744E6B50011166C /* NSMutableString+Transform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Transform.m"; sourceTree = "<group>"; };
 		93FC15EA17266C6500C35160 /* Actions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Actions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FC15ED17266C6500C35160 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		93FC15EF17266C6500C35160 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -99,6 +102,8 @@
 				93FC161117266CC400C35160 /* UIActionSheet+BlockHandlers.m */,
 				93FC16131726732000C35160 /* UIAlertView+BlockHandlers.h */,
 				93FC16141726732000C35160 /* UIAlertView+BlockHandlers.m */,
+				93639D4F1744E6B50011166C /* NSMutableString+Transform.h */,
+				93639D501744E6B50011166C /* NSMutableString+Transform.m */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 				93FC160A17266C6600C35160 /* ASViewController.m in Sources */,
 				93FC161217266CC400C35160 /* UIActionSheet+BlockHandlers.m in Sources */,
 				93FC16151726732000C35160 /* UIAlertView+BlockHandlers.m in Sources */,
+				93639D511744E6B50011166C /* NSMutableString+Transform.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +317,7 @@
 				93FC160F17266C6600C35160 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

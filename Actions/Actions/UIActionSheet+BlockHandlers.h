@@ -10,20 +10,18 @@
 
 typedef void (^ASActionSheetButtonHanlder)();
 
-typedef NS_ENUM(NSUInteger, ASActionSheetButtonType)
-{
-    ASActionSheetButtonTypeDefault     = 0,
-    ASActionSheetButtonTypeDestructive = 1,
-    ASActionSheetButtonTypeCancel      = 2
-};
-
 @interface UIActionSheet (BlockHandlers) <UIActionSheetDelegate>
 
 -(id)initWithTitle:(NSString *)title;
 
 -(void)addButtonWithTitle:(NSString*)title
-               buttonType:(ASActionSheetButtonType)buttonType
                   handler:(ASActionSheetButtonHanlder)block;
+
+-(void)addDestructiveButtonWithTitle:(NSString*)title
+                             handler:(ASActionSheetButtonHanlder)block;
+
+-(void)addCancelButtonWithTitle:(NSString*)title
+                        handler:(ASActionSheetButtonHanlder)block;
 
 
 @end

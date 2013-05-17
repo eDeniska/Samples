@@ -9,6 +9,12 @@
 #import <objc/objc-runtime.h>
 #import "UIAlertView+BlockHandlers.h"
 
+typedef NS_ENUM(NSUInteger, ASAlertViewButtonType)
+{
+    ASAlertViewButtonTypeDefault = 0,
+    ASAlertViewButtonTypeCancel  = 1
+};
+
 @implementation UIAlertView (BlockHandlers)
 
 #pragma mark - Block handlers storage
@@ -33,6 +39,18 @@
                       delegate:self
              cancelButtonTitle:nil
              otherButtonTitles:nil];
+}
+
+-(void)addButtonWithTitle:(NSString*)title
+                  handler:(ASAlertViewButtonHandler)block
+{
+    [self addButtonWithTitle:title buttonType:ASAlertViewButtonTypeDefault handler:block];
+}
+
+-(void)addCancelButtonWithTitle:(NSString*)title
+                        handler:(ASAlertViewButtonHandler)block
+{
+    [self addButtonWithTitle:title buttonType:ASAlertViewButtonTypeCancel handler:block];
 }
 
 -(void)addButtonWithTitle:(NSString*)title

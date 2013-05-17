@@ -9,7 +9,14 @@
 #import <objc/objc-runtime.h>
 #import "UIActionSheet+BlockHandlers.h"
 
-@implementation UIActionSheet (BlockHandlers) 
+typedef NS_ENUM(NSUInteger, ASActionSheetButtonType)
+{
+    ASActionSheetButtonTypeDefault     = 0,
+    ASActionSheetButtonTypeDestructive = 1,
+    ASActionSheetButtonTypeCancel      = 2
+};
+
+@implementation UIActionSheet (BlockHandlers)
 
 #pragma mark - Block handlers storage
 
@@ -34,6 +41,25 @@
         destructiveButtonTitle:nil
              otherButtonTitles:nil];
 }
+
+-(void)addButtonWithTitle:(NSString*)title
+                  handler:(ASActionSheetButtonHanlder)block
+{
+    [self addButtonWithTitle:title buttonType:ASActionSheetButtonTypeDefault handler:block];
+}
+
+-(void)addDestructiveButtonWithTitle:(NSString*)title
+                             handler:(ASActionSheetButtonHanlder)block
+{
+    [self addButtonWithTitle:title buttonType:ASActionSheetButtonTypeDestructive handler:block];
+}
+
+-(void)addCancelButtonWithTitle:(NSString*)title
+                        handler:(ASActionSheetButtonHanlder)block
+{
+    [self addButtonWithTitle:title buttonType:ASActionSheetButtonTypeCancel handler:block];
+}
+
 
 -(void)addButtonWithTitle:(NSString*)title
                buttonType:(ASActionSheetButtonType)buttonType
