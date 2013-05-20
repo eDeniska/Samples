@@ -44,6 +44,10 @@ Initializers
 ------------
 Sample app that demonstrates class loading, initialization and method swizzling techniques.
 
+DocOpener
+---------
+Sample app that demonstrates how to pass documents between applications.
+
 License
 =======
 MIT License
