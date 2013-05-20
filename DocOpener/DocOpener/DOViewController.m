@@ -7,22 +7,38 @@
 //
 
 #import "DOViewController.h"
+#import <QuickLook/QuickLook.h>
 
-@interface DOViewController () <UIDocumentInteractionControllerDelegate>
+
+@interface DOViewController () <UIDocumentInteractionControllerDelegate, QLPreviewControllerDataSource>
+
 @property (weak, nonatomic) IBOutlet UIButton *buttonShowOptions;
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonOpenDocument;
 @property (weak, nonatomic) IBOutlet UIButton *buttonPreview;
+@property (weak, nonatomic) IBOutlet UIButton *buttonQuickLook;
 
 @property (weak, nonatomic) IBOutlet UILabel *labelDocumentURL;
+
+@property (strong, nonatomic) UIDocumentInteractionController *docVC;
 
 - (IBAction)openDocument;
 - (IBAction)showOptions;
 - (IBAction)previewDocument;
+- (IBAction)quickLook;
 
 @end
 
 @implementation DOViewController
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!self.documentURL)
+    {
+        self.documentURL = [[NSBundle mainBundle] URLForResource:@"DocTest" withExtension:@"rtf"];
+    }
+}
 
 -(void)setDocumentURL:(NSURL *)documentURL
 {
@@ -33,37 +49,60 @@
     
     if (documentURL)
     {
+        self.docVC = [UIDocumentInteractionController interactionControllerWithURL:documentURL];
+        self.docVC.delegate = self;
+        self.docVC.annotation = @{ @"DocOpenerKey" : @"DocOpener application sample." };
         self.buttonShowOptions.enabled = YES;
         self.buttonOpenDocument.enabled = YES;
         self.buttonPreview.enabled = YES;
+        self.buttonQuickLook.enabled = YES;
         self.labelDocumentURL.text = documentURL.absoluteString;
     }
 }
 
+#pragma mark - Acitons
+
 - (IBAction)openDocument
 {
-    UIDocumentInteractionController *vc = [UIDocumentInteractionController interactionControllerWithURL:self.documentURL];
-    vc.delegate = self;
-    [vc presentOpenInMenuFromRect:self.buttonOpenDocument.frame inView:self.view animated:YES];
+    [self.docVC presentOpenInMenuFromRect:self.buttonOpenDocument.frame inView:self.view animated:YES];
 }
 
 - (IBAction)showOptions
 {
-    UIDocumentInteractionController *vc = [UIDocumentInteractionController interactionControllerWithURL:self.documentURL];
-    vc.delegate = self;
-    [vc presentOptionsMenuFromRect:self.buttonOpenDocument.frame inView:self.view animated:YES];
+    [self.docVC presentOptionsMenuFromRect:self.buttonOpenDocument.frame inView:self.view animated:YES];
 }
 
 - (IBAction)previewDocument
 {
-    UIDocumentInteractionController *vc = [UIDocumentInteractionController interactionControllerWithURL:self.documentURL];
-    vc.delegate = self;
-    [vc presentPreviewAnimated:YES];
+    [self.docVC presentPreviewAnimated:YES];
 }
+
+- (IBAction)quickLook
+{
+    QLPreviewController *vc = [[QLPreviewController alloc] init];
+    vc.dataSource = self;
+    [self presentViewController:vc animated:YES completion:NULL];
+}
+
+#pragma mark - UIDocumentInteractionControllerDelegate methods
+
 
 -(UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller
 {
-    return self;
+    return self.navigationController;
+}
+
+#pragma mark - QLPreviewControllerDataSource methods
+
+
+-(NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController *)controller
+{
+    return 1;
+}
+
+-(id<QLPreviewItem>)previewController:(QLPreviewController *)controller previewItemAtIndex:(NSInteger)index
+{
+    return self.documentURL;
 }
 
 @end

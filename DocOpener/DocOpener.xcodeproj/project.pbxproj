@@ -18,6 +18,8 @@
 		93340E601746565800D28C0C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93340E5F1746565800D28C0C /* Default-568h@2x.png */; };
 		93340E631746565900D28C0C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93340E611746565800D28C0C /* MainStoryboard.storyboard */; };
 		93340E661746565900D28C0C /* DOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93340E651746565900D28C0C /* DOViewController.m */; };
+		93BE30BC174669E500847C65 /* DocTest.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 93BE30BB174669E500847C65 /* DocTest.rtf */; };
+		93BE30BE174A0F9700847C65 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93BE30BD174A0F9700847C65 /* QuickLook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		93340E621746565900D28C0C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		93340E641746565900D28C0C /* DOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DOViewController.h; sourceTree = "<group>"; };
 		93340E651746565900D28C0C /* DOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DOViewController.m; sourceTree = "<group>"; };
+		93BE30BB174669E500847C65 /* DocTest.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = DocTest.rtf; sourceTree = "<group>"; };
+		93BE30BD174A0F9700847C65 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BE30BE174A0F9700847C65 /* QuickLook.framework in Frameworks */,
 				93340E4A1746565800D28C0C /* UIKit.framework in Frameworks */,
 				93340E4C1746565800D28C0C /* Foundation.framework in Frameworks */,
 				93340E4E1746565800D28C0C /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +78,7 @@
 		93340E481746565800D28C0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				93BE30BD174A0F9700847C65 /* QuickLook.framework */,
 				93340E491746565800D28C0C /* UIKit.framework */,
 				93340E4B1746565800D28C0C /* Foundation.framework */,
 				93340E4D1746565800D28C0C /* CoreGraphics.framework */,
@@ -83,6 +89,7 @@
 		93340E4F1746565800D28C0C /* DocOpener */ = {
 			isa = PBXGroup;
 			children = (
+				93BE30BB174669E500847C65 /* DocTest.rtf */,
 				93340E581746565800D28C0C /* DOAppDelegate.h */,
 				93340E591746565800D28C0C /* DOAppDelegate.m */,
 				93340E611746565800D28C0C /* MainStoryboard.storyboard */,
@@ -164,6 +171,7 @@
 				93340E5E1746565800D28C0C /* Default@2x.png in Resources */,
 				93340E601746565800D28C0C /* Default-568h@2x.png in Resources */,
 				93340E631746565900D28C0C /* MainStoryboard.storyboard in Resources */,
+				93BE30BC174669E500847C65 /* DocTest.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +307,7 @@
 				93340E6B1746565900D28C0C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

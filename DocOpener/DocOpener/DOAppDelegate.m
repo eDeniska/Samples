@@ -30,7 +30,7 @@
         annotation:(id)annotation
 {
     NSLog(@"openURL %@, source %@, annotation %@", url, sourceApplication, annotation);
-    DOViewController *vc = (DOViewController*)self.window.rootViewController;
+    DOViewController *vc = (DOViewController*)[(UINavigationController*)self.window.rootViewController topViewController];
     vc.documentURL = url;
     return YES;
 }
