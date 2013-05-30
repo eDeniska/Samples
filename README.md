@@ -48,6 +48,10 @@ DocOpener
 ---------
 Sample app that demonstrates how to pass documents between applications.
 
+Introspector
+------------
+Sample app that demonstrates how to use introspection to see what's inside Objective-C classes.
+
 License
 =======
 MIT License
