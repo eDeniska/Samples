@@ -74,10 +74,11 @@
                                       self.containingView.frame.size.width * scale,
                                       self.containingView.frame.size.height * scale);
         
-        CGImageRef cgCroped = CGImageCreateWithImageInRect(image.CGImage, cropFrame);
-        UIImage *cropped = [UIImage imageWithCGImage:cgCroped
+        CGImageRef cgCropped = CGImageCreateWithImageInRect(image.CGImage, cropFrame);
+        UIImage *cropped = [UIImage imageWithCGImage:cgCropped
                                                scale:scale
                                          orientation:UIImageOrientationUp];
+        CFRelease(cgCropped);
         blurredImage = [cropped applyTintEffectWithColor:[UIColor greenColor]];
         [self.imageCache setObject:blurredImage forKey:@(orientation)];
     }
