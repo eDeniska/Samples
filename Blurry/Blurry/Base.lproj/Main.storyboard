@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5051" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="BLRViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YgJ-es-rk1"/>
+                        <viewControllerLayoutGuide type="bottom" id="8zE-yQ-C7D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="conferences.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="mwc-Cv-Yqf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSS-6q-Smk">
+                                <rect key="frame" x="20" y="432" width="280" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iWN-AN-4Nd">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nice looking iOS 7 style" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAw-kg-4Px">
+                                        <rect key="frame" x="54" y="54" width="173" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="qAw-kg-4Px" secondAttribute="centerY" id="1vG-Vm-b7U"/>
+                                    <constraint firstAttribute="centerX" secondItem="qAw-kg-4Px" secondAttribute="centerX" id="E3t-Z8-nME"/>
+                                    <constraint firstAttribute="trailing" secondItem="iWN-AN-4Nd" secondAttribute="trailing" id="HDw-dt-vK5"/>
+                                    <constraint firstAttribute="height" constant="128" id="Qhr-SL-BPM"/>
+                                    <constraint firstItem="iWN-AN-4Nd" firstAttribute="top" secondItem="NSS-6q-Smk" secondAttribute="top" id="SuT-n2-0DN"/>
+                                    <constraint firstAttribute="bottom" secondItem="iWN-AN-4Nd" secondAttribute="bottom" id="dgH-gw-sJm"/>
+                                    <constraint firstItem="iWN-AN-4Nd" firstAttribute="leading" secondItem="NSS-6q-Smk" secondAttribute="leading" id="vs3-Nn-NRz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8zE-yQ-C7D" firstAttribute="top" secondItem="NSS-6q-Smk" secondAttribute="bottom" constant="20" symbolic="YES" id="4l3-yM-aPI"/>
+                            <constraint firstItem="NSS-6q-Smk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" symbolic="YES" id="5j3-92-1cq"/>
+                            <constraint firstAttribute="trailing" secondItem="mwc-Cv-Yqf" secondAttribute="trailing" id="76e-xf-5XB"/>
+                            <constraint firstItem="mwc-Cv-Yqf" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="9rR-vr-pFu"/>
+                            <constraint firstAttribute="trailing" secondItem="NSS-6q-Smk" secondAttribute="trailing" constant="20" symbolic="YES" id="O39-kD-3Fq"/>
+                            <constraint firstItem="8zE-yQ-C7D" firstAttribute="top" secondItem="mwc-Cv-Yqf" secondAttribute="bottom" id="XPZ-1z-3TX"/>
+                            <constraint firstItem="mwc-Cv-Yqf" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="kCJ-2j-3c0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bigImage" destination="mwc-Cv-Yqf" id="CAT-Xy-zwY"/>
+                        <outlet property="containingView" destination="NSS-6q-Smk" id="41I-Jk-YNw"/>
+                        <outlet property="croppedImage" destination="iWN-AN-4Nd" id="KLP-MI-InD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="conferences.jpg" width="5184" height="3456"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

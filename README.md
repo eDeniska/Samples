@@ -3,54 +3,57 @@ Samples
 
 Sample demo iOS projects
 
-ImageManage
------------
-sample project working with image pixel data - get pixel bytes and construct image from bytes.
-
-SecureData
-----------
-Sample project working with keychain. Some parts of code could be reused (as simple keychain wrapper).
-
-YATorch
+Actions
 -------
-Yet another torch. Sample on AVFoundation framework - manipulating torch.
+Sample app that demonstrates how categories, associated objects an blocks could make standard iOS action sheets and alert views easier to use.
 
-iRemember
----------
-Sample project demonstrating reminders usage (EventKit framework).
-
-Remind Me At
-------------
-App that allows to create geofenced reminders by tapping anywhere on the map.
-
-
-Keyboard Keys
--------------
-Demo project that shows how to easily attach more keys to standard iOS keyboard. Also it demonstrates how to use UIActivityViewController and local notifications.
-
-TouchSize
----------
-Sample app that shows how to detect tap size.
+Blurry
+------
+App demonstrates how to use Apple's image blurring example to create iOS 7 styled views.
 
 Categories
 ----------
 Sample app that shows some features of Objective-C categories.
 
-Actions
--------
-Sample app that demonstrates how categories, associated objects an blocks could make standard iOS action sheets and alert views easier to use.
+DocOpener
+---------
+Sample app that demonstrates how to pass documents between applications.
 
 Initializers
 ------------
 Sample app that demonstrates class loading, initialization and method swizzling techniques.
 
-DocOpener
----------
-Sample app that demonstrates how to pass documents between applications.
-
 Introspector
 ------------
 Sample app that demonstrates how to use introspection to see what's inside Objective-C classes.
+
+ImageManage
+-----------
+sample project working with image pixel data - get pixel bytes and construct image from bytes.
+
+iRemember
+---------
+Sample project demonstrating reminders usage (EventKit framework).
+
+Keyboard Keys
+-------------
+Demo project that shows how to easily attach more keys to standard iOS keyboard. Also it demonstrates how to use UIActivityViewController and local notifications.
+
+Remind Me At
+------------
+App that allows to create geofenced reminders by tapping anywhere on the map.
+
+SecureData
+----------
+Sample project working with keychain. Some parts of code could be reused (as simple keychain wrapper).
+
+TouchSize
+---------
+Sample app that shows how to detect tap size.
+
+YATorch
+-------
+Yet another torch. Sample on AVFoundation framework - manipulating torch.
 
 License
 =======
