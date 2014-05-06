@@ -29,7 +29,11 @@ Sample app that demonstrates how to use introspection to see what's inside Objec
 
 ImageManage
 -----------
-sample project working with image pixel data - get pixel bytes and construct image from bytes.
+Sample project working with image pixel data - get pixel bytes and construct image from bytes.
+
+ImageReplacer
+-------------
+Simple UIImageView category example implementing animated image replace.
 
 iRemember
 ---------
