@@ -15,19 +15,19 @@
     void (^completionBlock)() = [completion copy];
     
     UIImageView *fadingImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    fadingImageView.alpha = 0.0f;
+    fadingImageView.alpha = 1.0f;
     fadingImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     fadingImageView.translatesAutoresizingMaskIntoConstraints = YES;
     fadingImageView.contentMode = self.contentMode;
-    fadingImageView.image = image;
+    fadingImageView.image = self.image;
     [self addSubview:fadingImageView];
-    
+    self.image = image;
+
     [UIView animateWithDuration:duration
                      animations:^{
-                         fadingImageView.alpha = 1.0f;
+                         fadingImageView.alpha = 0.0f;
                      }
                      completion:^(BOOL finished) {
-                         self.image = image;
                          [fadingImageView removeFromSuperview];
                          if (completionBlock)
                          {
